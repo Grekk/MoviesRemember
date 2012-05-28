@@ -1,10 +1,10 @@
 ﻿@model MoviesRememberDomain.TinyMovieList
 @{
-    ViewBag.Title = "NowShowing";
+    ViewBag.Title = "ComingSoon";
 }
 
-<h2>Films dans les salles</h2>
-@Html.ActionLink("A venir", "ComingSoon")
+<h2>A venir</h2>
+@Html.ActionLink("Films dans les salles", "NowShowing")
 <section class="features">
 @Html.EditorFor(x => x.TinyMovies)
 </section>

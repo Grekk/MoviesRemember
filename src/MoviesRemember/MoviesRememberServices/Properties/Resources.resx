@@ -121,6 +121,9 @@
     <value>http://api.allocine.fr/rest/v3/</value>
   </data>
   <data name="TOP_RANKED_MOVIES_COMING_SOON" xml:space="preserve">
-    <value>http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=nowshowing&amp;page=1&amp;order=datedesc&amp;format=json</value>
+    <value>http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=toprank&amp;format=json</value>
+  </data>
+  <data name="TOP_RANKED_MOVIES_NOW_SHOWING" xml:space="preserve">
+    <value>http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=nowshowing&amp;page=1&amp;order=toprank&amp;format=json</value>
   </data>
 </root>

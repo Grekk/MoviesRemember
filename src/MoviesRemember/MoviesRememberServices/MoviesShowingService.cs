@@ -7,20 +7,41 @@ using MoviesRememberDomain;
 using System.Web.Script.Serialization;
 using System.Net;
 using MoviesRememberServices.Utils;
+using MoviesRememberServices.Builders;
 
 namespace MoviesRememberServices
 {
     public class MoviesShowingService : IMoviesShowingService
     {
-        public JavaScriptSerializer _jss { get; set; }
+        private JavaScriptSerializer _jss;
+        private readonly IMovieBuilder _movieBuilder;
+        
 
-        public MoviesShowingService()
+        public MoviesShowingService(IMovieBuilder movieBuilder)
         {
             _jss = new JavaScriptSerializer();
             _jss.RegisterConverters(new JavaScriptConverter[] { new DynamicJsonConverter() });
+            _movieBuilder = movieBuilder;
         }
 
-        public TinyMovieList GetTopRankedMovies()
+        public TinyMovieList GetNowShowingMovies()
+        {
+            TinyMovieList result = new TinyMovieList();
+
+            string json = JsonUtils.GetJson(Properties.Resources.TOP_RANKED_MOVIES_NOW_SHOWING);
+            dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
+
+            TinyMovie movie = null;
+            foreach (dynamic value in glossaryEntry.feed.movie)
+            {
+                movie = _movieBuilder.BuildTinyMovie(value);
+                result.TinyMovies.Add(movie);
+            }
+
+            return result;
+        }
+
+        public TinyMovieList GetComingSoonMovies()
         {
             TinyMovieList result = new TinyMovieList();
 
@@ -30,7 +51,7 @@ namespace MoviesRememberServices
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
             {
-                movie = JsonUtils.GetTinyMovie(value);
+                movie = _movieBuilder.BuildTinyMovie(value);
                 result.TinyMovies.Add(movie);
             }
 

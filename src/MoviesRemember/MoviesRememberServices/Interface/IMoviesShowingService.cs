@@ -8,6 +8,8 @@ namespace MoviesRememberServices.Interface
 {
     public interface IMoviesShowingService
     {
-        TinyMovieList GetTopRankedMovies();
+        TinyMovieList GetNowShowingMovies();
+
+        TinyMovieList GetComingSoonMovies();
     }
 }

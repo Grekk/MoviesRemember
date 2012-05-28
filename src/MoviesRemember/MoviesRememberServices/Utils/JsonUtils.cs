@@ -33,15 +33,5 @@ namespace MoviesRememberServices.Utils
                 return null;
             }
         }
-
-        public static TinyMovie GetTinyMovie(dynamic jsonMovie)
-        {
-            TinyMovie movie = new TinyMovie();
-            movie.Id = long.Parse(jsonMovie["code"].ToString());
-            movie.PictureUrl = (jsonMovie["poster"])["href"];
-            movie.Title = jsonMovie["title"];
-            movie.OriginalTitle = jsonMovie["originalTitle"];
-            return movie;
-        }
     }
 }

@@ -70,11 +70,20 @@ namespace MoviesRememberServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=nowshowing&amp;page=1&amp;order=datedesc&amp;format=json.
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=toprank&amp;format=json.
         /// </summary>
         internal static string TOP_RANKED_MOVIES_COMING_SOON {
             get {
                 return ResourceManager.GetString("TOP_RANKED_MOVIES_COMING_SOON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=nowshowing&amp;page=1&amp;order=toprank&amp;format=json.
+        /// </summary>
+        internal static string TOP_RANKED_MOVIES_NOW_SHOWING {
+            get {
+                return ResourceManager.GetString("TOP_RANKED_MOVIES_NOW_SHOWING", resourceCulture);
             }
         }
     }

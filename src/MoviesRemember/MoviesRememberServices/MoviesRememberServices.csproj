@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\IMovieBuilder.cs" />
+    <Compile Include="Builders\MovieBuilder.cs" />
     <Compile Include="Utils\Bootstrapper.cs" />
     <Compile Include="Utils\DynamicJsonConverter.cs" />
     <Compile Include="Utils\DynamicJsonObject.cs" />

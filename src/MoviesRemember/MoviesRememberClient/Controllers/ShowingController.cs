@@ -21,9 +21,14 @@ namespace MoviesRememberClient.Controllers
         // GET: /Showing/
         public ActionResult NowShowing()
         {
-            TinyMovieList result = _moviesShowingService.GetTopRankedMovies();
+            TinyMovieList result = _moviesShowingService.GetNowShowingMovies();
             return View(result);
         }
 
+        public ActionResult ComingSoon()
+        {
+            TinyMovieList result = _moviesShowingService.GetComingSoonMovies();
+            return View(result);
+        }
     }
 }

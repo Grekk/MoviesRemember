@@ -2,12 +2,23 @@
 @{
     ViewBag.Title = "TinyMovie";
 }
-<tr>
-    <td>
-        <img src="@Model.PictureUrl" alt="@Model.Title" height="193" width="143"/>
-    </td>
-    <td valign="top">
-        <h4>@Model.Title <small>(@Model.OriginalTitle)</small></h4>
-
-    </td>
-</tr>
+<section class="feature">
+<div>
+    <img src="@Model.PictureUrl" alt="@Model.Title" height="193" width="143"/>
+    <h4>@Model.Title</h4>
+    <small>(@Model.OriginalTitle)</small>
+    <p>De: @Model.Director</p>
+    <p>Avec: @Model.Actors </p>
+    @if (@Model.PressRatings != null)
+    {
+    <p>Presse: @Model.PressRatings / 5 </p>
+    }
+    @if (@Model.UserRatings != null)
+    {
+    <p>Spectateurs: @Model.UserRatings / 5 </p>
+    }
+    @if (!string.IsNullOrEmpty(@Model.Trailer))
+    {
+    <a href="@Model.Trailer">Bande annonce</a>
+    }
+</section>

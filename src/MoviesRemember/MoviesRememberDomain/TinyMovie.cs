@@ -14,5 +14,15 @@ namespace MoviesRememberDomain
         public string Title { get; set; }
 
         public string OriginalTitle { get; set; }
+
+        public string Actors { get; set; }
+
+        public string Director { get; set; }
+
+        public decimal? UserRatings { get; set; }
+
+        public decimal? PressRatings { get; set; }
+
+        public string Trailer { get; set; }
     }
 }

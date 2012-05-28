@@ -232,7 +232,8 @@ hgroup.title h2 {
 
 /* features */
 section.feature {
-    width: 450px;
+    width: 200px;
+    height:500px;
     float: left;
     padding: 10px;
 }
@@ -319,13 +320,11 @@ aside {
 
 /* forms */
 fieldset {
-    border: none;
     margin: 0;
     padding: 0;
 }
 
     fieldset legend {
-        display: none;
     }
     
     fieldset ol {
