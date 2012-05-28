@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="SearchServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +51,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MoviesRememberDomain\MoviesRememberDomain.csproj">
+      <Project>{7F249CF9-7625-4F1D-AD93-E203D9547EF1}</Project>
+      <Name>MoviesRememberDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoviesRememberServices\MoviesRememberServices.csproj">
+      <Project>{49B20EF3-B02F-4980-9983-EF165E351FBF}</Project>
+      <Name>MoviesRememberServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

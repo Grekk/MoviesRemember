@@ -1,0 +1,9 @@
+﻿@model MoviesRememberDomain.TinyMovieList
+@{
+    ViewBag.Title = "NowShowing";
+}
+
+<h2>Films dans les salles</h2>
+<table>
+@Html.EditorFor(x => x.TinyMovies)
+</table>

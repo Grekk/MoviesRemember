@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MoviesRememberServices.Interface;
 
 namespace MoviesRememberClient.Controllers
 {
@@ -12,8 +13,12 @@ namespace MoviesRememberClient.Controllers
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
+
+
             return View();
         }
+
+
 
         public ActionResult About()
         {

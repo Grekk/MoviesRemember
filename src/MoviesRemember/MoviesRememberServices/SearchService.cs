@@ -6,11 +6,10 @@ using MoviesRememberServices.Properties;
 
 namespace MoviesRememberServices
 {
-    public class Class1
+    public class SearchService
     {
-        public Class1()
+        public SearchService()
         {
-            //Resources.API_URL = 
         }
     }
 }

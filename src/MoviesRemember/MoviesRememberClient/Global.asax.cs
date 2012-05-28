@@ -6,6 +6,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MoviesRememberClient.Registry;
+using StructureMap;
+using MoviesRememberServices.Utils;
 
 namespace MoviesRememberClient
 {
@@ -43,7 +46,22 @@ namespace MoviesRememberClient
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
+            InitializeContainer();
+
             BundleTable.Bundles.RegisterTemplateBundles();
         }
+
+        private static void InitializeContainer()
+        {
+            Bootstrapper.Bootstrap();
+            StructureMapDependencyResolver structureMapDependencyResolver = new StructureMapDependencyResolver();
+            DependencyResolver.SetResolver(structureMapDependencyResolver);
+        }
+
+        protected void Application_EndRequest(object sender, EventArgs e)
+        {
+            ObjectFactory.ReleaseAndDisposeAllHttpScopedObjects();
+        }
+
     }
 }

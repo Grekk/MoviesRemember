@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MoviesRememberTest
+namespace MoviesRememberServices.Interface
 {
-    public class Class1
+    public interface ISearchService
     {
     }
 }

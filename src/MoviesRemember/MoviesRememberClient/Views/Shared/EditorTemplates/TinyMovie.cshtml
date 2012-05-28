@@ -1,0 +1,13 @@
+﻿@model MoviesRememberDomain.TinyMovie
+@{
+    ViewBag.Title = "TinyMovie";
+}
+<tr>
+    <td>
+        <img src="@Model.PictureUrl" alt="@Model.Title" height="193" width="143"/>
+    </td>
+    <td valign="top">
+        <h4>@Model.Title <small>(@Model.OriginalTitle)</small></h4>
+
+    </td>
+</tr>
