@@ -50,10 +50,8 @@
     <Compile Include="Utils\DynamicJsonConverter.cs" />
     <Compile Include="Utils\DynamicJsonObject.cs" />
     <Compile Include="Utils\JsonUtils.cs" />
-    <Compile Include="Interface\ISearchService.cs" />
     <Compile Include="Interface\IMoviesShowingService.cs" />
     <Compile Include="MoviesShowingService.cs" />
-    <Compile Include="SearchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
