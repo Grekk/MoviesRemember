@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
@@ -46,6 +49,8 @@
   <ItemGroup>
     <Compile Include="Builders\IMovieBuilder.cs" />
     <Compile Include="Builders\MovieBuilder.cs" />
+    <Compile Include="Interface\IUserService.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="Utils\Bootstrapper.cs" />
     <Compile Include="Utils\DynamicJsonConverter.cs" />
     <Compile Include="Utils\DynamicJsonObject.cs" />

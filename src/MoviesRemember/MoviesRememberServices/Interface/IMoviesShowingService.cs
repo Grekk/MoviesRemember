@@ -11,5 +11,7 @@ namespace MoviesRememberServices.Interface
         TinyMovieList GetNowShowingMovies();
 
         TinyMovieList GetComingSoonMovies();
+
+        Movie GetMovie(long code);
     }
 }

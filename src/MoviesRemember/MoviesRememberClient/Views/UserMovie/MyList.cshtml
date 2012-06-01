@@ -1,0 +1,10 @@
+﻿@model MoviesRememberDomain.TinyMovieList
+@{
+    ViewBag.Title = "UserMovie";
+}
+<h2>
+    Mes films
+</h2>
+<section class="features">
+@Html.EditorFor(x => x.TinyMovies)
+</section>

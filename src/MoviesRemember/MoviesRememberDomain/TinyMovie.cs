@@ -8,6 +8,8 @@ namespace MoviesRememberDomain
     public class TinyMovie
     {
         public long Id { get; set; }
+
+        public long ApiId { get; set; }
      
         public string PictureUrl { get; set; }
 
@@ -24,5 +26,7 @@ namespace MoviesRememberDomain
         public decimal? PressRatings { get; set; }
 
         public string Trailer { get; set; }
+
+        public string ReleaseDate { get; set; }
     }
 }

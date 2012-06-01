@@ -57,5 +57,12 @@ namespace MoviesRememberServices
 
             return result;
         }
+
+        public Movie GetMovie(long code)
+        {
+            string json = JsonUtils.GetJson(Properties.Resources.DISPLAY_MOVIE_URL+"&code=" + code);
+            dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
+            return _movieBuilder.BuildMovie(glossaryEntry.movie);
+        }
     }
 }

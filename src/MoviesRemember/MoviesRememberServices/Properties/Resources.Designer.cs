@@ -70,6 +70,15 @@ namespace MoviesRememberServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movie?partner=YW5kcm9pZC12M3M&amp;profile=large&amp;format=json.
+        /// </summary>
+        internal static string DISPLAY_MOVIE_URL {
+            get {
+                return ResourceManager.GetString("DISPLAY_MOVIE_URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=toprank&amp;format=json.
         /// </summary>
         internal static string TOP_RANKED_MOVIES_COMING_SOON {

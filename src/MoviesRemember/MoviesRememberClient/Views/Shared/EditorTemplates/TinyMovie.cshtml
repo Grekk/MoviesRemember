@@ -4,11 +4,24 @@
 }
 <section class="feature">
 <div>
-    <img src="@Model.PictureUrl" alt="@Model.Title" height="193" width="143"/>
+    <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })"><img src="@Model.PictureUrl" height="193" width="143"/></a>
     <h4>@Model.Title</h4>
-    <small>(@Model.OriginalTitle)</small>
-    <p>De: @Model.Director</p>
-    <p>Avec: @Model.Actors </p>
+    @if (!string.IsNullOrEmpty(@Model.OriginalTitle))
+    {
+        <small>(@Model.OriginalTitle)</small>
+    }
+    
+    <p>Sortie: @Model.ReleaseDate</p>
+
+    @if (!string.IsNullOrEmpty(@Model.Director))
+    {
+         <p>De: @Model.Director</p>
+    }
+    
+    @if (!string.IsNullOrEmpty(@Model.Actors))
+    {
+         <p>De: @Model.Actors</p>
+    }
     @if (@Model.PressRatings != null)
     {
     <p>Presse: @Model.PressRatings / 5 </p>
@@ -21,4 +34,5 @@
     {
     <a href="@Model.Trailer">Bande annonce</a>
     }
+</div>
 </section>

@@ -1,0 +1,68 @@
+﻿@model MoviesRememberDomain.Movie
+@{
+    ViewBag.Title = "DisplayMovie";
+}
+@using (Html.BeginForm("AddMovie", "Showing"))
+{
+    @Html.HiddenFor(x => x.Title);
+    @Html.HiddenFor(x => x.ApiId);
+    @Html.HiddenFor(x => x.PictureUrl);
+    @Html.HiddenFor(x => x.ReleaseDate);
+<section>
+<h2>@Model.Title</h2>
+<small>(@Model.OriginalTitle)</small>
+<table>
+    <tr>
+        <td>
+            <div>
+                <img src="@Model.PictureUrl" alt="@Model.Title" height="193" width="143"/>
+            </div>
+        </td>
+        <td>
+            <div>
+                <ul>
+                    @Html.EditorFor(x => x.LinkList)
+                </ul>
+            </div>
+        </td>
+        <td>
+            <div>
+                <input type="submit" value="Ajouter" />
+            </div>
+        </td>
+    </tr>
+</table>
+    
+    
+<p>
+    <b>Sortie</b>: @Model.ReleaseDate</p>
+<p>
+    <b>De</b>: @Model.Director</p>
+<p>
+    <b>Avec</b>: @Model.Actors
+</p>
+@if (@Model.PressRatings != null)
+{
+    <p>
+        <b>Presse</b>: @Model.PressRatings / 5
+    </p>
+}
+@if (@Model.UserRatings != null)
+{
+    <p>
+        <b>Spectateurs</b>: @Model.UserRatings / 5
+    </p>
+}
+@if (!string.IsNullOrEmpty(@Model.Synopsis))
+{
+    <p>
+        <b>Synopsis</b>
+    </p>
+    <p>@Model.Synopsis</p>
+}
+@if (!string.IsNullOrEmpty(@Model.Trailer))
+{
+    <a href="@Model.Trailer">Bande annonce</a>
+}
+</section>
+}

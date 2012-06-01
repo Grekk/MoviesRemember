@@ -120,6 +120,9 @@
   <data name="API_URL" xml:space="preserve">
     <value>http://api.allocine.fr/rest/v3/</value>
   </data>
+  <data name="DISPLAY_MOVIE_URL" xml:space="preserve">
+    <value>http://api.allocine.fr/rest/v3/movie?partner=YW5kcm9pZC12M3M&amp;profile=large&amp;format=json</value>
+  </data>
   <data name="TOP_RANKED_MOVIES_COMING_SOON" xml:space="preserve">
     <value>http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=toprank&amp;format=json</value>
   </data>

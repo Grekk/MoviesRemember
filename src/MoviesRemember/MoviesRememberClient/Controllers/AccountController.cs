@@ -12,7 +12,6 @@ namespace MoviesRememberClient.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-
         //
         // GET: /Account/Login
 
@@ -89,7 +88,8 @@ namespace MoviesRememberClient.Controllers
 
         //
         // GET: /Account/Register
-
+        
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return ContextDependentView();
@@ -98,6 +98,7 @@ namespace MoviesRememberClient.Controllers
         //
         // POST: /Account/JsonRegister
 
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult JsonRegister(RegisterModel model)
         {
@@ -124,7 +125,8 @@ namespace MoviesRememberClient.Controllers
 
         //
         // POST: /Account/Register
-
+        
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {

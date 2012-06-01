@@ -127,6 +127,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShowingController.cs" />
+    <Compile Include="Controllers\UserMovieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,6 +240,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Showing\ComingSoon.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserMovie\MyList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Showing\DisplayMovie.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\Link.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

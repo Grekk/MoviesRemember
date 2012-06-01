@@ -9,5 +9,7 @@ namespace MoviesRememberServices.Builders
     public interface IMovieBuilder
     {
         TinyMovie BuildTinyMovie(dynamic jsonData);
+
+        Movie BuildMovie(dynamic jsonData);
     }
 }
