@@ -21,8 +21,23 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult MyList()
         {
-            TinyMovieList model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey);
+            IList<UserMovie> model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey);
             return View(model);
+        }
+
+        [Authorize]
+        public ActionResult UpdateUserMovie(UserMovie userMovie)
+        {
+            if(userMovie.Delete)
+            {
+                _userService.DeleteMovie(userMovie.Id);
+            }
+            else
+            {
+                _userService.UpdateMovie(userMovie);
+            }
+
+            return RedirectToAction("MyList");
         }
     }
 }

@@ -28,6 +28,7 @@ namespace MoviesRememberServices.Utils
             ObjectFactory.Container.Configure(
                 c => c.For<Database>().Use<DefaultConnectionDB>()
                 );
+            
             ObjectFactory.Container.Configure(
                c => c.For<AbstractUserMovieDAO>().Use<UserMovieDAO>()
                );
@@ -47,6 +48,28 @@ namespace MoviesRememberServices.Utils
                 .ForMember(dest => dest.user_movie_title, opt => opt.MapFrom(src => src.Title));
 
             Mapper.CreateMap<Movie, TinyMovie>();
+
+            Mapper.CreateMap<UserMovie, user_movie>()
+                .ForMember(dest => dest.user_movie_picture, opt => opt.MapFrom(src => src.PictureUrl))
+                .ForMember(dest => dest.user_movie_release_date, opt => opt.MapFrom(src => DateTime.Parse(src.ReleaseDate)))
+                .ForMember(dest => dest.user_movie_disabled, opt => opt.MapFrom(src => src.Disabled))
+                .ForMember(dest => dest.user_movie_id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.user_movie_rate, opt => opt.MapFrom(src => src.Rate))
+                .ForMember(dest => dest.user_movie_seen, opt => opt.MapFrom(src => src.Seen))
+                .ForMember(dest => dest.user_movie_user_id, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.user_movie_api_id, opt => opt.MapFrom(src => src.ApiId))
+                .ForMember(dest => dest.user_movie_title, opt => opt.MapFrom(src => src.Title));
+
+            Mapper.CreateMap<user_movie, UserMovie>()
+                .ForMember(dest => dest.PictureUrl, opt => opt.MapFrom(src => src.user_movie_picture))
+                .ForMember(dest => dest.ReleaseDate, opt => opt.MapFrom(src => src.user_movie_release_date.ToShortDateString()))
+                .ForMember(dest => dest.Disabled, opt => opt.MapFrom(src => src.user_movie_disabled))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.user_movie_id))
+                .ForMember(dest => dest.Rate, opt => opt.MapFrom(src => src.user_movie_rate))
+                .ForMember(dest => dest.Seen, opt => opt.MapFrom(src => src.user_movie_seen))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.user_movie_user_id))
+                .ForMember(dest => dest.ApiId, opt => opt.MapFrom(src => src.user_movie_api_id))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.user_movie_title));
 
             Mapper.CreateMap<user_movie, TinyMovie>()
                 .ForMember(dest => dest.PictureUrl, opt => opt.MapFrom(src => src.user_movie_picture))

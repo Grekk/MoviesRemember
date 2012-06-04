@@ -63,5 +63,7 @@ namespace MoviesRememberDao.Interface
         }
 
         public abstract TEntity Fetch(Guid uid);
+
+        public abstract void DeleteById(long uid);
     }
 }

@@ -29,12 +29,21 @@ namespace MoviesRememberServices
             _userMovieRepo.Insert(userMovie);
         }
 
-        public TinyMovieList GetUserMovieList(Guid userId)
+        public void DeleteMovie(long id)
+        {
+            _userMovieRepo.DeleteById(id);
+        }
+
+        public void UpdateMovie(UserMovie userMovie)
+        {
+            user_movie userMovieToUpdate = Mapper.Map<UserMovie, user_movie>(userMovie);
+            _userMovieRepo.Update(userMovieToUpdate);
+        }
+
+        public IList<UserMovie> GetUserMovieList(Guid userId)
         {
             IList<user_movie> dbResult = _userMovieRepo.GetByUserId(userId);
-
-            TinyMovieList result = new TinyMovieList();
-            result.TinyMovies = Mapper.Map<IList<user_movie>, IList<TinyMovie>>(dbResult);
+            IList<UserMovie> result = Mapper.Map<IList<user_movie>, IList<UserMovie>>(dbResult);
 
             return result;
         }

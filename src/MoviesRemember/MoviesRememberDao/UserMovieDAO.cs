@@ -16,9 +16,9 @@ namespace MoviesRememberDao
         {
         }
 
-        public override user_movie Fetch(Guid uid)
+        public override user_movie Fetch(Guid id)
         {
-            var fetchSql = PetaPoco.Sql.Builder.Select("*").From("user_movie").Where("user_movie_id = @0", uid);
+            var fetchSql = PetaPoco.Sql.Builder.Select("*").From("user_movie").Where("user_movie_id = @0", id);
             return _db.SingleOrDefault<user_movie>(fetchSql);
         }
 
@@ -28,5 +28,12 @@ namespace MoviesRememberDao
             var fetchSql = PetaPoco.Sql.Builder.Select("*").From("user_movie").Where("user_movie_user_id = @0", userId);
             return _db.Fetch<user_movie>(fetchSql);
         }
+
+        public override void DeleteById(long uid)
+        {
+            _db.Execute("DELETE FROM user_movie WHERE user_movie_id = @0",uid);
+        }
+
+
     }
 }

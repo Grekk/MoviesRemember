@@ -1,0 +1,36 @@
+﻿@model MoviesRememberDomain.UserMovie
+@{
+    ViewBag.Title = "UserMovie";
+}
+@using (Html.BeginForm("UpdateUserMovie", "UserMovie"))
+{
+    <section class="feature">
+<div>
+    <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })"><img src="@Model.PictureUrl" height="193" width="143"/></a>
+    <h4>@Model.Title</h4>
+    <p>
+    @Html.LabelFor(x => x.ReleaseDate)
+    @Html.DisplayFor(x => x.ReleaseDate)
+    </p>
+    <p>
+    @Html.LabelFor(x => x.Seen)
+    @Html.CheckBoxFor(x => x.Seen)
+    </p>
+    <p>
+    @Html.LabelFor(x => x.Rate)
+    @Html.TextBoxFor(x => x.Rate)
+    </p>
+    <p>
+    @Html.LabelFor(x => x.Delete)
+    @Html.CheckBoxFor(x => x.Delete)
+    </p>
+    @Html.HiddenFor(x => x.ApiId)
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.PictureUrl)
+    @Html.HiddenFor(x => x.ReleaseDate)
+    @Html.HiddenFor(x => x.UserId)
+    @Html.HiddenFor(x => x.Title)
+    <input type="submit" value="Update" />
+</div>
+</section>
+}

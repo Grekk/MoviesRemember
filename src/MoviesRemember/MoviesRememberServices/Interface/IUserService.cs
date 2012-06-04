@@ -10,6 +10,10 @@ namespace MoviesRememberServices.Interface
     {
         void AddMovie(Guid userId, Movie movie);
 
-        TinyMovieList GetUserMovieList(Guid userId);
+        void DeleteMovie (long id);
+
+        void UpdateMovie(UserMovie movie);
+
+        IList<UserMovie> GetUserMovieList(Guid userId);
     }
 }
