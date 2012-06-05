@@ -26,7 +26,7 @@ namespace MoviesRememberDao
         public override IList<user_movie> GetByUserId(Guid userId)
         {
             var fetchSql = PetaPoco.Sql.Builder.Select("*").From("user_movie").Where("user_movie_user_id = @0", userId);
-            return _db.Fetch<user_movie>(fetchSql);
+            return _db.Query<user_movie>(fetchSql).ToList();
         }
 
         public override void DeleteById(long uid)

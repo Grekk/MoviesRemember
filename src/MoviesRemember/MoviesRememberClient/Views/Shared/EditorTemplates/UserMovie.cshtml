@@ -13,16 +13,12 @@
     @Html.DisplayFor(x => x.ReleaseDate)
     </p>
     <p>
-    @Html.LabelFor(x => x.Seen)
-    @Html.CheckBoxFor(x => x.Seen)
-    </p>
-    <p>
     @Html.LabelFor(x => x.Rate)
     @Html.TextBoxFor(x => x.Rate)
     </p>
     <p>
-    @Html.LabelFor(x => x.Delete)
-    @Html.CheckBoxFor(x => x.Delete)
+    @Html.LabelFor(x => x.ShouldDelete)
+    @Html.CheckBoxFor(x => x.ShouldDelete)
     </p>
     @Html.HiddenFor(x => x.ApiId)
     @Html.HiddenFor(x => x.Id)

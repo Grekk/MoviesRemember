@@ -22,7 +22,7 @@ namespace MoviesRememberServices
 
         public void AddMovie(Guid userId, Movie movie)
         {
-            TinyMovie tinyMovie = (TinyMovie)movie;
+            TinyMovie tinyMovie = (TinyMovie)movie; 
             user_movie userMovie = Mapper.Map<TinyMovie, user_movie>(tinyMovie);
             userMovie.user_movie_user_id = userId;
 
@@ -42,8 +42,12 @@ namespace MoviesRememberServices
 
         public IList<UserMovie> GetUserMovieList(Guid userId)
         {
+            IList<UserMovie> result = new List<UserMovie>();
             IList<user_movie> dbResult = _userMovieRepo.GetByUserId(userId);
-            IList<UserMovie> result = Mapper.Map<IList<user_movie>, IList<UserMovie>>(dbResult);
+            foreach(user_movie movie in dbResult)
+            {
+                result.Add(Mapper.Map<user_movie, UserMovie>(movie));
+            }
 
             return result;
         }

@@ -780,36 +780,6 @@ namespace DefaultConnection
 		Guid _user_movie_user_id;
 
         [Column] 
-		public bool user_movie_seen 
-		{ 
-			get
-			{
-				return _user_movie_seen;
-			}
-			set
-			{
-				_user_movie_seen = value;
-				MarkColumnModified("user_movie_seen");
-			}
-		}
-		bool _user_movie_seen;
-
-        [Column] 
-		public bool user_movie_disabled 
-		{ 
-			get
-			{
-				return _user_movie_disabled;
-			}
-			set
-			{
-				_user_movie_disabled = value;
-				MarkColumnModified("user_movie_disabled");
-			}
-		}
-		bool _user_movie_disabled;
-
-        [Column] 
 		public int? user_movie_rate 
 		{ 
 			get

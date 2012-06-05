@@ -21,15 +21,10 @@ namespace MoviesRememberDomain
 
         public Guid UserId { get; set; }
 
-        public bool Disabled { get; set; }
-
-        [Display(Name = "Déjà vu: ")]
-        public bool Seen { get; set; }
-
         [Display(Name = "Note: ")]
-        public int Rate { get; set; }
+        public int? Rate { get; set; }
 
         [Display(Name = "Supprimer? ")]
-        public bool Delete { get; set; }
+        public bool ShouldDelete { get; set; }
     }
 }

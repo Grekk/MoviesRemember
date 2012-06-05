@@ -28,7 +28,7 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult UpdateUserMovie(UserMovie userMovie)
         {
-            if(userMovie.Delete)
+            if (userMovie.ShouldDelete)
             {
                 _userService.DeleteMovie(userMovie.Id);
             }
