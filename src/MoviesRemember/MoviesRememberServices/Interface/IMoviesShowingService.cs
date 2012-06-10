@@ -8,9 +8,11 @@ namespace MoviesRememberServices.Interface
 {
     public interface IMoviesShowingService
     {
-        TinyMovieList GetNowShowingMovies();
+        TinyMovieList GetNowShowingMoviesByRate();
+        TinyMovieList GetNowShowingMoviesByDate();
 
-        TinyMovieList GetComingSoonMovies();
+        TinyMovieList GetComingSoonMoviesByRate();
+        TinyMovieList GetComingSoonMoviesByDate();
 
         Movie GetMovie(long code);
     }

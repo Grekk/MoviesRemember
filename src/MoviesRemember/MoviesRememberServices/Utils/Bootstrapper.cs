@@ -43,7 +43,7 @@ namespace MoviesRememberServices.Utils
         {
             Mapper.CreateMap<TinyMovie, user_movie>()
                 .ForMember(dest => dest.user_movie_picture, opt => opt.MapFrom(src => src.PictureUrl))
-                .ForMember(dest => dest.user_movie_release_date, opt => opt.MapFrom(src => DateTime.Parse(src.ReleaseDate)))
+                .ForMember(dest => dest.user_movie_release_date, opt => opt.MapFrom(src => src.ReleaseDate))
                 .ForMember(dest => dest.user_movie_api_id, opt => opt.MapFrom(src => src.ApiId))
                 .ForMember(dest => dest.user_movie_title, opt => opt.MapFrom(src => src.Title));
 

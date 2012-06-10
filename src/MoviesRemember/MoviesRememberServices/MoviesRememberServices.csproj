@@ -49,7 +49,9 @@
   <ItemGroup>
     <Compile Include="Builders\IMovieBuilder.cs" />
     <Compile Include="Builders\MovieBuilder.cs" />
+    <Compile Include="Interface\ISearchService.cs" />
     <Compile Include="Interface\IUserService.cs" />
+    <Compile Include="SearchService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Utils\Bootstrapper.cs" />
     <Compile Include="Utils\DynamicJsonConverter.cs" />

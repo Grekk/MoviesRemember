@@ -1,0 +1,9 @@
+﻿@model MoviesRememberClient.Models.SearchModels
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Résultats</h2>
+<section class="features">
+@Html.EditorFor(x => x.TinyMovieList.TinyMovies)
+</section>

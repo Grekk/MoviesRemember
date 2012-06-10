@@ -19,7 +19,14 @@ namespace MoviesRememberServices.Builders
             movie.UserRatings = BuildProperty(jsonData, "statistics", "userRating");
             movie.Actors = BuildProperty(jsonData, "castingShort", "actors");
             movie.Director = BuildProperty(jsonData, "castingShort", "directors");
-            movie.ReleaseDate = BuildProperty(jsonData, "release", "releaseDate");
+
+            string releaseString = BuildProperty(jsonData, "release", "releaseDate");
+            DateTime releaseDate;
+            if(DateTime.TryParse(releaseString, out releaseDate))
+            {
+                movie.ReleaseDate = releaseDate;
+            }
+
             movie.Trailer = BuildProperty(jsonData,"trailer","href");
 
             return movie;
@@ -34,7 +41,13 @@ namespace MoviesRememberServices.Builders
             movie.OriginalTitle = jsonData.originalTitle;
             movie.Actors = jsonData.castingShort.actors;
             movie.Director = jsonData.castingShort.directors;
-            movie.ReleaseDate = jsonData.release.releaseDate;
+
+            string releaseString = jsonData.release.releaseDate;
+            DateTime releaseDate;
+            if (DateTime.TryParse(releaseString, out releaseDate))
+            {
+                movie.ReleaseDate = releaseDate;
+            }
             movie.Trailer = BuildProperty(jsonData.trailer, "href");
             movie.LinkList = BuildLink(jsonData.link);
 

@@ -24,7 +24,7 @@ namespace MoviesRememberServices
             _movieBuilder = movieBuilder;
         }
 
-        public TinyMovieList GetNowShowingMovies()
+        public TinyMovieList GetNowShowingMoviesByRate()
         {
             TinyMovieList result = new TinyMovieList();
 
@@ -41,7 +41,25 @@ namespace MoviesRememberServices
             return result;
         }
 
-        public TinyMovieList GetComingSoonMovies()
+        public TinyMovieList GetNowShowingMoviesByDate()
+        {
+            TinyMovieList result = new TinyMovieList();
+
+            string json = JsonUtils.GetJson(Properties.Resources.ORDER_BY_DATE_MOVIES_NOW_SHOWING);
+            dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
+
+            TinyMovie movie = null;
+            foreach (dynamic value in glossaryEntry.feed.movie)
+            {
+                movie = _movieBuilder.BuildTinyMovie(value);
+                result.TinyMovies.Add(movie);
+            }
+            result.TinyMovies = result.TinyMovies.OrderByDescending(x => x.ReleaseDate).ToList();
+
+            return result;
+        }
+
+        public TinyMovieList GetComingSoonMoviesByRate()
         {
             TinyMovieList result = new TinyMovieList();
 
@@ -54,6 +72,24 @@ namespace MoviesRememberServices
                 movie = _movieBuilder.BuildTinyMovie(value);
                 result.TinyMovies.Add(movie);
             }
+
+            return result;
+        }
+
+        public TinyMovieList GetComingSoonMoviesByDate()
+        {
+            TinyMovieList result = new TinyMovieList();
+
+            string json = JsonUtils.GetJson(Properties.Resources.ORDER_BY_DATE_MOVIES_COMING_SOON);
+            dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
+
+            TinyMovie movie = null;
+            foreach (dynamic value in glossaryEntry.feed.movie)
+            {
+                movie = _movieBuilder.BuildTinyMovie(value);
+                result.TinyMovies.Add(movie);
+            }
+            result.TinyMovies = result.TinyMovies.OrderBy(x => x.ReleaseDate).ToList();
 
             return result;
         }

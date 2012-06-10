@@ -123,6 +123,15 @@
   <data name="DISPLAY_MOVIE_URL" xml:space="preserve">
     <value>http://api.allocine.fr/rest/v3/movie?partner=YW5kcm9pZC12M3M&amp;profile=large&amp;format=json</value>
   </data>
+  <data name="ORDER_BY_DATE_MOVIES_COMING_SOON" xml:space="preserve">
+    <value>http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=dateasc&amp;format=json</value>
+  </data>
+  <data name="ORDER_BY_DATE_MOVIES_NOW_SHOWING" xml:space="preserve">
+    <value>http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=nowshowing&amp;page=1&amp;order=datedesc&amp;format=json</value>
+  </data>
+  <data name="SEARCH_MOVIE_URL" xml:space="preserve">
+    <value>http://api.allocine.fr/rest/v3/search?partner=YW5kcm9pZC12M3M&amp;filter=movie,theater,person,news,tvseries&amp;count=5&amp;page=1&amp;format=json&amp;q=</value>
+  </data>
   <data name="TOP_RANKED_MOVIES_COMING_SOON" xml:space="preserve">
     <value>http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=toprank&amp;format=json</value>
   </data>

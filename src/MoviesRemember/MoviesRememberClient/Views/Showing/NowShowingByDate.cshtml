@@ -1,0 +1,21 @@
+﻿@model MoviesRememberDomain.TinyMovieList
+@{
+    ViewBag.Title = "NowShowingByDate";
+}
+<h2>
+    A venir
+</h2>
+<a href="@Url.Action("NowShowing", "Showing")">Par note</a> @*@for (int c = 0; c < Model.NbWeek; c++)
+{
+    Model.CurrentWeek = c;
+    
+@*<h3>
+            <a href="#">@(c + 1)
+                semaines</a></h3>
+    <section class="features">
+            @Html.EditorFor(x => x.GetMovieByWeek)
+        </section>
+}*@
+<section class="features">
+            @Html.EditorFor(x => x.TinyMovies)
+        </section>

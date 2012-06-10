@@ -5,13 +5,24 @@
 <section class="feature">
 <div>
     <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })"><img src="@Model.PictureUrl" height="193" width="143"/></a>
-    <h4>@Model.Title</h4>
+    @if (!string.IsNullOrEmpty(@Model.Title))
+    {
+       <h4>@Model.Title</h4>
+    }
+    else
+    {
+       <h4>@Model.OriginalTitle</h4>
+    }
+    
     @if (!string.IsNullOrEmpty(@Model.OriginalTitle))
     {
         <small>(@Model.OriginalTitle)</small>
     }
     
+    @if (@Model.ReleaseDate.HasValue)
+    {
     <p>Sortie: @Model.ReleaseDate</p>
+    }
 
     @if (!string.IsNullOrEmpty(@Model.Director))
     {

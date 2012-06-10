@@ -25,14 +25,30 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult NowShowing()
         {
-            TinyMovieList result = _moviesShowingService.GetNowShowingMovies();
+            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByRate();
+            return View(result);
+        }
+
+        //
+        // GET: /Showing/
+        [Authorize]
+        public ActionResult NowShowingByDate()
+        {
+            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByDate();
             return View(result);
         }
 
         [Authorize]
         public ActionResult ComingSoon()
         {
-            TinyMovieList result = _moviesShowingService.GetComingSoonMovies();
+            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate();
+            return View(result);
+        }
+
+        [Authorize]
+        public ActionResult ComingSoonByDate()
+        {
+            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByDate();
             return View(result);
         }
 

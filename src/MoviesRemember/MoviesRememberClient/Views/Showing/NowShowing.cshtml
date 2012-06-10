@@ -3,8 +3,8 @@
     ViewBag.Title = "NowShowing";
 }
 
-<h2>Films dans les salles</h2>
-@Html.ActionLink("A venir", "ComingSoon")
+<h2>Dans les salles</h2>
+<a href="@Url.Action("NowShowingByDate", "Showing")">Par date</a>
 <section class="features">
 @Html.EditorFor(x => x.TinyMovies)
 </section>

@@ -4,7 +4,7 @@
 }
 
 <h2>A venir</h2>
-@Html.ActionLink("Films dans les salles", "NowShowing")
+<a href="@Url.Action("ComingSoonByDate", "Showing")">Par date</a>
 <section class="features">
 @Html.EditorFor(x => x.TinyMovies)
 </section>

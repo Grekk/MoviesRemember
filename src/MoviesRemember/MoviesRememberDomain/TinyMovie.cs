@@ -27,6 +27,6 @@ namespace MoviesRememberDomain
 
         public string Trailer { get; set; }
 
-        public string ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
     }
 }

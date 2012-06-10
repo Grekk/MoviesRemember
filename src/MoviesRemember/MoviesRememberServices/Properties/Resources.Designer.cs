@@ -79,6 +79,33 @@ namespace MoviesRememberServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=dateasc&amp;format=json.
+        /// </summary>
+        internal static string ORDER_BY_DATE_MOVIES_COMING_SOON {
+            get {
+                return ResourceManager.GetString("ORDER_BY_DATE_MOVIES_COMING_SOON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=nowshowing&amp;page=1&amp;order=datedesc&amp;format=json.
+        /// </summary>
+        internal static string ORDER_BY_DATE_MOVIES_NOW_SHOWING {
+            get {
+                return ResourceManager.GetString("ORDER_BY_DATE_MOVIES_NOW_SHOWING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/search?partner=YW5kcm9pZC12M3M&amp;filter=movie,theater,person,news,tvseries&amp;count=5&amp;page=1&amp;format=json&amp;q=.
+        /// </summary>
+        internal static string SEARCH_MOVIE_URL {
+            get {
+                return ResourceManager.GetString("SEARCH_MOVIE_URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=toprank&amp;format=json.
         /// </summary>
         internal static string TOP_RANKED_MOVIES_COMING_SOON {
