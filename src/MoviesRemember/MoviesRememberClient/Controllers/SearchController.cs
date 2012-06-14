@@ -20,10 +20,10 @@ namespace MoviesRememberClient.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Search(SearchModels model)
+        public ActionResult Search(string q)
         {
-            model.TinyMovieList = _searchService.Search(model.Query);
-            return View("Search", model);
+            TinyMovieList movieList = _searchService.Search(q);
+            return View("Search", movieList);
         }
     }
 }

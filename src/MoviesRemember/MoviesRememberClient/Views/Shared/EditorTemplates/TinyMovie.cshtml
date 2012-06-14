@@ -4,7 +4,14 @@
 }
 <section class="feature">
 <div>
+@if (string.IsNullOrEmpty(Model.PictureUrl))
+{
+    <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })"><img src="../../Images/no_image.gif" height="193" width="143"/></a>
+}
+else
+{
     <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })"><img src="@Model.PictureUrl" height="193" width="143"/></a>
+}
     @if (!string.IsNullOrEmpty(@Model.Title))
     {
        <h4>@Model.Title</h4>
@@ -21,7 +28,7 @@
     
     @if (@Model.ReleaseDate.HasValue)
     {
-    <p>Sortie: @Model.ReleaseDate</p>
+    <p>Sortie: @Html.DisplayFor(x => x.ReleaseDate)</p>
     }
 
     @if (!string.IsNullOrEmpty(@Model.Director))

@@ -8,14 +8,21 @@
     @Html.HiddenFor(x => x.ApiId);
     @Html.HiddenFor(x => x.PictureUrl);
     @Html.HiddenFor(x => x.ReleaseDate);
-<section>
+    <section>
 <h2>@Model.Title</h2>
 <small>(@Model.OriginalTitle)</small>
 <table>
     <tr>
         <td>
             <div>
+            @if (string.IsNullOrEmpty(Model.PictureUrl))
+            {
+                <img src="../../Images/no_image.gif" alt="@Model.Title" height="193" width="143"/>
+            }
+            else
+            {
                 <img src="@Model.PictureUrl" alt="@Model.Title" height="193" width="143"/>
+            }
             </div>
         </td>
         <td>
@@ -33,14 +40,24 @@
     </tr>
 </table>
     
-    
+@if (Model.ReleaseDate.HasValue)
+{
 <p>
-    <b>Sortie</b>: @Model.ReleaseDate</p>
+    <b>Sortie</b>: @Html.DisplayFor(x => x.ReleaseDate)
+</p>
+}
+@if (!string.IsNullOrEmpty(Model.Director))
+{
 <p>
-    <b>De</b>: @Model.Director</p>
+    <b>De</b>: @Model.Director
+</p>
+}
+@if (!string.IsNullOrEmpty(Model.Actors))
+{
 <p>
     <b>Avec</b>: @Model.Actors
 </p>
+}
 @if (@Model.PressRatings != null)
 {
     <p>

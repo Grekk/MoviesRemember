@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoviesRememberDomain
 {
@@ -27,6 +28,7 @@ namespace MoviesRememberDomain
 
         public string Trailer { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime? ReleaseDate { get; set; }
     }
 }

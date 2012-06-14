@@ -22,12 +22,12 @@ namespace MoviesRememberServices.Builders
 
             string releaseString = BuildProperty(jsonData, "release", "releaseDate");
             DateTime releaseDate;
-            if(DateTime.TryParse(releaseString, out releaseDate))
+            if (DateTime.TryParse(releaseString, out releaseDate))
             {
                 movie.ReleaseDate = releaseDate;
             }
 
-            movie.Trailer = BuildProperty(jsonData,"trailer","href");
+            movie.Trailer = BuildProperty(jsonData, "trailer", "href");
 
             return movie;
         }
@@ -36,20 +36,46 @@ namespace MoviesRememberServices.Builders
         {
             Movie movie = new Movie();
             movie.ApiId = jsonData.code;
-            movie.PictureUrl = jsonData.poster.href;
-            movie.Title = jsonData.title;
-            movie.OriginalTitle = jsonData.originalTitle;
-            movie.Actors = jsonData.castingShort.actors;
-            movie.Director = jsonData.castingShort.directors;
 
-            string releaseString = jsonData.release.releaseDate;
-            DateTime releaseDate;
-            if (DateTime.TryParse(releaseString, out releaseDate))
+            try { movie.PictureUrl = jsonData.poster.href; }
+            catch { movie.PictureUrl = null; }
+
+            try { movie.Title = jsonData.title; }
+            catch { movie.Title = null; }
+
+            try { movie.OriginalTitle = jsonData.originalTitle; }
+            catch { movie.OriginalTitle = null; }
+
+            try { movie.Actors = jsonData.castingShort.actors; }
+            catch { movie.Actors = null; }
+
+            try { movie.Director = jsonData.castingShort.directors; }
+            catch { movie.Director = null; }
+
+            try
             {
-                movie.ReleaseDate = releaseDate;
+                string releaseString = jsonData.release.releaseDate;
+                DateTime releaseDate;
+                if (DateTime.TryParse(releaseString, out releaseDate))
+                {
+                    movie.ReleaseDate = releaseDate;
+                }
             }
-            movie.Trailer = BuildProperty(jsonData.trailer, "href");
-            movie.LinkList = BuildLink(jsonData.link);
+            catch
+            {
+            }
+
+            try
+            {
+                movie.Trailer = BuildProperty(jsonData.trailer, "href");
+            }
+            catch { }
+
+            try
+            {
+                movie.LinkList = BuildLink(jsonData.link);
+            }
+            catch { }
 
             try { movie.PressRatings = jsonData.statistics.pressRating; }
             catch { movie.PressRatings = null; }

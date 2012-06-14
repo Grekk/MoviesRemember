@@ -31,10 +31,16 @@ namespace MoviesRememberServices
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
 
             TinyMovie movie = null;
-            foreach (dynamic value in glossaryEntry.feed.movie)
+            try
             {
-                movie = _movieBuilder.BuildTinyMovie(value);
-                result.TinyMovies.Add(movie);
+                foreach (dynamic value in glossaryEntry.feed.movie)
+                {
+                    movie = _movieBuilder.BuildTinyMovie(value);
+                    result.TinyMovies.Add(movie);
+                }
+            }
+            catch
+            {
             }
 
             return result;

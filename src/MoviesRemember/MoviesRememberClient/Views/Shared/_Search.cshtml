@@ -1,11 +1,7 @@
-﻿@model MoviesRememberClient.Models.SearchModels
-@{
-    ViewBag.Title = "_Search";
-}
-<p class="site-title">
+﻿<p class="site-title">
     @using (Html.BeginForm("Search", "Search"))
     {
-        @Html.EditorFor(x => x.Query)
-        <input type="submit" value="Recherche" />
+        <input type="text" name="q" />
+        <input type="submit" id="btnSearch" value="Recherche" />
     }
 </p>
