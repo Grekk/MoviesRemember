@@ -5,10 +5,10 @@ using System.Text;
 using StructureMap;
 using PetaPoco;
 using MoviesRememberDomain;
-using DefaultConnection;
 using AutoMapper;
 using MoviesRememberDao.Interface;
 using MoviesRememberDao;
+using SQLSERVER_CONNECTION_STRING;
 
 namespace MoviesRememberServices.Utils
 {
@@ -26,7 +26,7 @@ namespace MoviesRememberServices.Utils
                     }));
 
             ObjectFactory.Container.Configure(
-                c => c.For<Database>().Use<DefaultConnectionDB>()
+                c => c.For<Database>().Use<SQLSERVER_CONNECTION_STRINGDB>()
                 );
             
             ObjectFactory.Container.Configure(

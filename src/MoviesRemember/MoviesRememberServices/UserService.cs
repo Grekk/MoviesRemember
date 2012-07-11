@@ -5,9 +5,9 @@ using System.Text;
 using MoviesRememberServices.Interface;
 using MoviesRememberDomain;
 using AutoMapper;
-using DefaultConnection;
 using MoviesRememberDao;
 using MoviesRememberDao.Interface;
+using SQLSERVER_CONNECTION_STRING;
 
 namespace MoviesRememberServices
 {
