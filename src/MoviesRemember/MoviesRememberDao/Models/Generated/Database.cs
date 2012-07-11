@@ -4,7 +4,7 @@
 // 
 // The following connection settings were used to generate this file
 // 
-//     Connection String Name: `SQLSERVER_CONNECTION_STRING`
+//     Connection String Name: `MoviesRememberDB`
 //     Provider:               `System.Data.SqlClient`
 //     Connection String:      `Server=304b0b5d-c557-43e5-8f04-a05f00aca108.sqlserver.sequelizer.com;Database=db304b0b5dc55743e58f04a05f00aca108;User ID=hlymwlymaizejlbq;password=**zapped**;`
 //     Schema:                 ``
@@ -16,12 +16,12 @@ using System.Linq;
 using System.Web;
 using PetaPoco;
 
-namespace SQLSERVER_CONNECTION_STRING
+namespace MoviesRememberDB
 {
-	public partial class SQLSERVER_CONNECTION_STRINGDB : Database
+	public partial class MoviesRememberDBDB : Database
 	{
-		public SQLSERVER_CONNECTION_STRINGDB() 
-			: base("SQLSERVER_CONNECTION_STRING")
+		public MoviesRememberDBDB() 
+			: base("MoviesRememberDB")
 		{
 			CommonConstruct();
 		}
@@ -30,11 +30,11 @@ namespace SQLSERVER_CONNECTION_STRING
 		
 		public interface IFactory
 		{
-			SQLSERVER_CONNECTION_STRINGDB GetInstance();
+			MoviesRememberDBDB GetInstance();
 		}
 		
 		public static IFactory Factory { get; set; }
-        public static SQLSERVER_CONNECTION_STRINGDB GetInstance()
+        public static MoviesRememberDBDB GetInstance()
         {
 			if (_instance!=null)
 				return _instance;
@@ -42,10 +42,10 @@ namespace SQLSERVER_CONNECTION_STRING
 			if (Factory!=null)
 				return Factory.GetInstance();
 			else
-				return new SQLSERVER_CONNECTION_STRINGDB();
+				return new MoviesRememberDBDB();
         }
 
-		[ThreadStatic] static SQLSERVER_CONNECTION_STRINGDB _instance;
+		[ThreadStatic] static MoviesRememberDBDB _instance;
 		
 		public override void OnBeginTransaction()
 		{
@@ -61,7 +61,7 @@ namespace SQLSERVER_CONNECTION_STRING
         
 		public class Record<T> where T:new()
 		{
-			public static SQLSERVER_CONNECTION_STRINGDB repo { get { return SQLSERVER_CONNECTION_STRINGDB.GetInstance(); } }
+			public static MoviesRememberDBDB repo { get { return MoviesRememberDBDB.GetInstance(); } }
 			public bool IsNew() { return repo.IsNew(this); }
 			public object Insert() { return repo.Insert(this); }
 			public int Update(IEnumerable<string> columns) { return repo.Update(this, columns); }
@@ -127,7 +127,7 @@ namespace SQLSERVER_CONNECTION_STRING
 	[TableName("Memberships")]
 	[PrimaryKey("UserId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class Membership : SQLSERVER_CONNECTION_STRINGDB.Record<Membership>  
+    public partial class Membership : MoviesRememberDBDB.Record<Membership>  
     {
         [Column] 
 		public Guid ApplicationId 
@@ -419,7 +419,7 @@ namespace SQLSERVER_CONNECTION_STRING
 	[TableName("Profiles")]
 	[PrimaryKey("UserId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class Profile : SQLSERVER_CONNECTION_STRINGDB.Record<Profile>  
+    public partial class Profile : MoviesRememberDBDB.Record<Profile>  
     {
         [Column] 
 		public Guid UserId 
@@ -501,7 +501,7 @@ namespace SQLSERVER_CONNECTION_STRING
 	[TableName("Roles")]
 	[PrimaryKey("RoleId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class Role : SQLSERVER_CONNECTION_STRINGDB.Record<Role>  
+    public partial class Role : MoviesRememberDBDB.Record<Role>  
     {
         [Column] 
 		public Guid ApplicationId 
@@ -568,7 +568,7 @@ namespace SQLSERVER_CONNECTION_STRING
 	[TableName("Users")]
 	[PrimaryKey("UserId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class User : SQLSERVER_CONNECTION_STRINGDB.Record<User>  
+    public partial class User : MoviesRememberDBDB.Record<User>  
     {
         [Column] 
 		public Guid ApplicationId 
@@ -650,7 +650,7 @@ namespace SQLSERVER_CONNECTION_STRING
 	[TableName("UsersInRoles")]
 	[PrimaryKey("UserId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class UsersInRole : SQLSERVER_CONNECTION_STRINGDB.Record<UsersInRole>  
+    public partial class UsersInRole : MoviesRememberDBDB.Record<UsersInRole>  
     {
         [Column] 
 		public Guid UserId 
@@ -687,7 +687,7 @@ namespace SQLSERVER_CONNECTION_STRING
 	[TableName("user_movie")]
 	[PrimaryKey("user_movie_id")]
 	[ExplicitColumns]
-    public partial class user_movie : SQLSERVER_CONNECTION_STRINGDB.Record<user_movie>  
+    public partial class user_movie : MoviesRememberDBDB.Record<user_movie>  
     {
         [Column] 
 		public long user_movie_id 
@@ -799,7 +799,7 @@ namespace SQLSERVER_CONNECTION_STRING
 	[TableName("Applications")]
 	[PrimaryKey("ApplicationId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class Application : SQLSERVER_CONNECTION_STRINGDB.Record<Application>  
+    public partial class Application : MoviesRememberDBDB.Record<Application>  
     {
         [Column] 
 		public string ApplicationName 

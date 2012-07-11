@@ -7,7 +7,7 @@ using MoviesRememberDomain;
 using AutoMapper;
 using MoviesRememberDao;
 using MoviesRememberDao.Interface;
-using SQLSERVER_CONNECTION_STRING;
+using MoviesRememberDB;
 
 namespace MoviesRememberServices
 {

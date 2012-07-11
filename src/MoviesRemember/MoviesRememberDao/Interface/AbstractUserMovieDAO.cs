@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SQLSERVER_CONNECTION_STRING;
+using MoviesRememberDB;
 
 namespace MoviesRememberDao.Interface
 {

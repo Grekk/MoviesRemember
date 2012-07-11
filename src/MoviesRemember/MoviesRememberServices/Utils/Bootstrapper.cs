@@ -8,7 +8,7 @@ using MoviesRememberDomain;
 using AutoMapper;
 using MoviesRememberDao.Interface;
 using MoviesRememberDao;
-using SQLSERVER_CONNECTION_STRING;
+using MoviesRememberDB;
 
 namespace MoviesRememberServices.Utils
 {
@@ -26,7 +26,7 @@ namespace MoviesRememberServices.Utils
                     }));
 
             ObjectFactory.Container.Configure(
-                c => c.For<Database>().Use<SQLSERVER_CONNECTION_STRINGDB>()
+                c => c.For<Database>().Use<MoviesRememberDBDB>()
                 );
             
             ObjectFactory.Container.Configure(
