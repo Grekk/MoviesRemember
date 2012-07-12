@@ -8,7 +8,7 @@ namespace MoviesRememberDao
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private PetaPoco.Database _db = null;
+        private readonly PetaPoco.Database _db;
 
         public UnitOfWork(PetaPoco.Database db)
         {
