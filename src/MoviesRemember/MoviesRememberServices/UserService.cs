@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,15 @@ namespace MoviesRememberServices
     public class UserService : IUserService
     {
         private readonly AbstractUserMovieDAO _userMovieRepo;
+        private readonly IUserActionsDAO _userActionDAO;
 
-        public UserService(AbstractUserMovieDAO userMovieRepo)
+        public const int UserActionsLength = 50;
+
+
+        public UserService(IUserActionsDAO userActionDAO ,AbstractUserMovieDAO userMovieRepo)
         {
             _userMovieRepo = userMovieRepo;
+            _userActionDAO = userActionDAO;
         }
 
         public void AddMovie(Guid userId, Movie movie)
@@ -50,6 +56,17 @@ namespace MoviesRememberServices
             }
 
             return result;
+        }
+
+        public IList<UserAction> AddUserAction(UserAction action)
+        {
+            IList<UserAction> userActions = _userActionDAO.AddActionAtFirstIndex(action);
+            if(userActions.Count == UserActionsLength)
+            {
+                userActions = _userActionDAO.RemoveLastAction();
+            }
+
+            return userActions;
         }
     }
 }

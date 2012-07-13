@@ -15,5 +15,7 @@ namespace MoviesRememberServices.Interface
         void UpdateMovie(UserMovie movie);
 
         IList<UserMovie> GetUserMovieList(Guid userId);
+
+        IList<UserAction> AddUserAction(UserAction action);
     }
 }

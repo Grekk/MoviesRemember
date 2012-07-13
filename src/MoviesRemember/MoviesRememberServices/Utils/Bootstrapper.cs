@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using StructureMap;
@@ -9,6 +10,7 @@ using AutoMapper;
 using MoviesRememberDao.Interface;
 using MoviesRememberDao;
 using MoviesRememberDB;
+using ServiceStack.Redis;
 
 namespace MoviesRememberServices.Utils
 {
@@ -16,6 +18,10 @@ namespace MoviesRememberServices.Utils
     {
         private static void RegisterDependencies()
         {
+            string host = ConfigurationManager.AppSettings["REDISTOGO_URL"];
+            int port = int.Parse(ConfigurationManager.AppSettings["REDISTOGO_PORT"]);
+            string password = ConfigurationManager.AppSettings["REDISTOGO_PASSWORD"];
+
             ObjectFactory.Initialize(
                 x => x.Scan(
                     scan =>
@@ -27,6 +33,14 @@ namespace MoviesRememberServices.Utils
 
             ObjectFactory.Container.Configure(
                 c => c.For<Database>().Use<MoviesRememberDBDB>()
+                );
+
+            ObjectFactory.Container.Configure(
+                c => c.For<IRedisClient>().Use(new RedisClient(host, port, password))
+                );
+
+            ObjectFactory.Container.Configure(
+                c => c.For<IUserActionsDAO>().Use<UserActionsDAO>()
                 );
             
             ObjectFactory.Container.Configure(
