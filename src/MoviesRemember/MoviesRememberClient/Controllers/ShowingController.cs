@@ -70,7 +70,6 @@ namespace MoviesRememberClient.Controllers
         public ActionResult UsersActions()
         {
             IList<UserAction> userActions = _userService.GetUsersActions().Where(x => x.UserName != User.Identity.Name).ToList();
-
             return View("_UsersActions", userActions);
         }
     }
