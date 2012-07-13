@@ -56,19 +56,19 @@ namespace MoviesRememberTest.DAO
         public void AddAndRemoveUserActionTest()
         {
             // arrange
-            UserAction actionFirst = new UserAction
+            UserAction actionFirst = new UserAction()
             {
                 Action = Action.ADD_MOVIE,
                 UserName = "1",
-                ActionLabel = "Le huitieme jour"
+                MovieName = "Le huitieme jour"
             };
 
             // arrange
-            UserAction actionSecond = new UserAction
+            UserAction actionSecond = new UserAction()
             {
                 Action = Action.ADD_MOVIE,
                 UserName = "2",
-                ActionLabel = "Le huitieme jour"
+                MovieName = "Le huitieme jour"
             };
 
             // act
@@ -79,11 +79,11 @@ namespace MoviesRememberTest.DAO
             IList<UserAction> result = _userActionsDAO.GetActions();
             result.Count.Should().Be(2);
             result[0].Action.Should().Be(actionSecond.Action);
-            result[0].ActionLabel.Should().Be(actionSecond.ActionLabel);
+            result[0].MovieName.Should().Be(actionSecond.MovieName);
             result[0].UserName.Should().Be(actionSecond.UserName);
 
             result[1].Action.Should().Be(actionFirst.Action);
-            result[1].ActionLabel.Should().Be(actionFirst.ActionLabel);
+            result[1].MovieName.Should().Be(actionFirst.MovieName);
             result[1].UserName.Should().Be(actionFirst.UserName);
 
             _userActionsDAO.RemoveLastAction();
@@ -91,7 +91,7 @@ namespace MoviesRememberTest.DAO
             result = _userActionsDAO.GetActions();
             result.Count.Should().Be(1);
             result[0].Action.Should().Be(actionSecond.Action);
-            result[0].ActionLabel.Should().Be(actionSecond.ActionLabel);
+            result[0].MovieName.Should().Be(actionSecond.MovieName);
             result[0].UserName.Should().Be(actionSecond.UserName);
         }
 

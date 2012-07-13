@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,6 +22,7 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult MyList()
         {
+            ViewBag.UsersActions = _userService.GetUsersActions();
             IList<UserMovie> model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey);
             return View(model);
         }

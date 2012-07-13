@@ -9,6 +9,7 @@ using AutoMapper;
 using MoviesRememberDao;
 using MoviesRememberDao.Interface;
 using MoviesRememberDB;
+using Action = MoviesRememberDomain.Action;
 
 namespace MoviesRememberServices
 {
@@ -26,13 +27,17 @@ namespace MoviesRememberServices
             _userActionDAO = userActionDAO;
         }
 
-        public void AddMovie(Guid userId, Movie movie)
+        public void AddMovie(Guid userId,string userName, Movie movie)
         {
             TinyMovie tinyMovie = (TinyMovie)movie; 
             user_movie userMovie = Mapper.Map<TinyMovie, user_movie>(tinyMovie);
             userMovie.user_movie_user_id = userId;
 
             _userMovieRepo.Insert(userMovie);
+
+            UserAction actionToAdd = new UserAction(userName, movie);
+            actionToAdd.Action = Action.ADD_MOVIE;
+            AddUserAction(actionToAdd);
         }
 
         public void DeleteMovie(long id)
@@ -67,6 +72,11 @@ namespace MoviesRememberServices
             }
 
             return userActions;
+        }
+
+        public IList<UserAction> GetUsersActions()
+        {
+            return _userActionDAO.GetActions();
         }
     }
 }

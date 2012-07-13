@@ -1,0 +1,10 @@
+﻿@model IList<MoviesRememberDomain.UserAction>
+@{
+    Layout = null;
+}
+<div style="max-width: 200px">
+    @foreach (MoviesRememberDomain.UserAction action in Model)
+    {
+        @Html.EditorFor(x => action)
+    }
+</div>

@@ -63,8 +63,15 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult AddMovie(Movie movie)
         {
-            _userService.AddMovie((Guid)Membership.GetUser().ProviderUserKey, movie);
+            _userService.AddMovie((Guid)Membership.GetUser().ProviderUserKey,User.Identity.Name, movie);
             return RedirectToAction("DisplayMovie", new { code = movie.ApiId });
+        }
+
+        public ActionResult UsersActions()
+        {
+            IList<UserAction> userActions = _userService.GetUsersActions().Where(x => x.UserName != User.Identity.Name).ToList();
+
+            return View("_UsersActions", userActions);
         }
     }
 }

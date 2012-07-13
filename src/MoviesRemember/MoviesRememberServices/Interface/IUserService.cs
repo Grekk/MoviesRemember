@@ -8,7 +8,7 @@ namespace MoviesRememberServices.Interface
 {
     public interface IUserService
     {
-        void AddMovie(Guid userId, Movie movie);
+        void AddMovie(Guid userId, string userName, Movie movie);
 
         void DeleteMovie (long id);
 
@@ -17,5 +17,7 @@ namespace MoviesRememberServices.Interface
         IList<UserMovie> GetUserMovieList(Guid userId);
 
         IList<UserAction> AddUserAction(UserAction action);
+
+        IList<UserAction> GetUsersActions();
     }
 }

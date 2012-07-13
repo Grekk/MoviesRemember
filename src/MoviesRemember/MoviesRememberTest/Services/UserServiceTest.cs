@@ -49,11 +49,11 @@ namespace MoviesRememberTest.Services
 
             for (int i = 1; i < UserService.UserActionsLength; i++)
             {
-                UserAction action = new UserAction
+                UserAction action = new UserAction()
                 {
                     Action = Action.ADD_MOVIE,
                     UserName = i.ToString(),
-                    ActionLabel = "Le huitieme jour"
+                    MovieName = "Le huitieme jour"
                 };
 
                 actionList = _userService.AddUserAction(action);
@@ -68,7 +68,7 @@ namespace MoviesRememberTest.Services
             {
                 Action = Action.ADD_MOVIE,
                 UserName = UserService.UserActionsLength.ToString(),
-                ActionLabel = "Le huitieme jour"
+                MovieName = "Le huitieme jour"
             };
 
             actionList = _userService.AddUserAction(lastAction);
