@@ -19,6 +19,8 @@ namespace MoviesRememberServices.Utils
         private static void RegisterDependencies()
         {
             string host = ConfigurationManager.AppSettings["REDISTOGO_URL"];
+            int port = int.Parse(ConfigurationManager.AppSettings["REDISTOGO_PORT"]);
+            string pwd = ConfigurationManager.AppSettings["REDISTOGO_PWD"];
 
 
             ObjectFactory.Initialize(
@@ -34,19 +36,19 @@ namespace MoviesRememberServices.Utils
                 c => c.For<Database>().Use<MoviesRememberDBDB>()
                 );
 
-#if(RELEASE)
+            if (ConfigurationManager.AppSettings["Environment"] == "Release")
             {
-            var url = new Uri(host);
-            ObjectFactory.Container.Configure(
-                c => c.For<IRedisClient>().Use(new RedisClient(url))
-                );
-#else
+                var url = new Uri(host);
+                ObjectFactory.Container.Configure(
+                    c => c.For<IRedisClient>().Use(new RedisClient(url))
+                    );
+            }
+            else
             {
                 ObjectFactory.Container.Configure(
-                c => c.For<IRedisClient>().Use(new RedisClient(host))
-                );
+                    c => c.For<IRedisClient>().Use(new RedisClient(host, port, pwd))
+                    );
             }
-#endif
 
             ObjectFactory.Container.Configure(
                 c => c.For<IUserActionsDAO>().Use<UserActionsDAO>()
