@@ -170,6 +170,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\images\search-icon.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Images\no_image.gif" />

@@ -23,32 +23,39 @@ namespace MoviesRememberClient.Controllers
         //
         // GET: /Showing/
         [Authorize]
-        public ActionResult NowShowing()
+        public ActionResult NowShowing(int numPage = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByRate();
+            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByRate(numPage);
             return View(result);
         }
 
         //
         // GET: /Showing/
         [Authorize]
-        public ActionResult NowShowingByDate()
+        public ActionResult NowShowingByDate(int numPage = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByDate();
+            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByDate(numPage);
+            return View(result);
+        }
+
+        //[Authorize]
+        //public ActionResult ComingSoon()
+        //{
+        //    TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate(1);
+        //    return View(result);
+        //}
+
+        [Authorize]
+        public ActionResult ComingSoon(int numPage = 1)
+        {
+            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate(numPage);
             return View(result);
         }
 
         [Authorize]
-        public ActionResult ComingSoon()
+        public ActionResult ComingSoonByDate(int numPage = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate();
-            return View(result);
-        }
-
-        [Authorize]
-        public ActionResult ComingSoonByDate()
-        {
-            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByDate();
+            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByDate(numPage);
             return View(result);
         }
 

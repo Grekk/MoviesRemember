@@ -1,7 +1,14 @@
-﻿<p class="site-title">
+﻿<style type="text/css">
+    .searchBox
+    {
+        background-image: url('../../Content/themes/base/images/search-icon.png');
+        background-repeat: no-repeat;
+        padding-left: 20px;
+    }
+</style>
+<p class="site-title">
     @using (Html.BeginForm("Search", "Search"))
     {
-        <input type="text" name="q" />
-        <input type="submit" id="btnSearch" value="Recherche" />
+        <input type="text" class="searchBox" name="q" />
     }
 </p>
