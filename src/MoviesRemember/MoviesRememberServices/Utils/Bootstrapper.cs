@@ -19,8 +19,6 @@ namespace MoviesRememberServices.Utils
         private static void RegisterDependencies()
         {
             string host = ConfigurationManager.AppSettings["REDISTOGO_URL"];
-            int port = int.Parse(ConfigurationManager.AppSettings["REDISTOGO_PORT"]);
-            string password = ConfigurationManager.AppSettings["REDISTOGO_PASSWORD"];
 
             ObjectFactory.Initialize(
                 x => x.Scan(
@@ -36,7 +34,7 @@ namespace MoviesRememberServices.Utils
                 );
 
             ObjectFactory.Container.Configure(
-                c => c.For<IRedisClient>().Use(new RedisClient(host, port, password))
+                c => c.For<IRedisClient>().Use(new RedisClient(host))
                 );
 
             ObjectFactory.Container.Configure(

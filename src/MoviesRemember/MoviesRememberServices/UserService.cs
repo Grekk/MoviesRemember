@@ -9,6 +9,7 @@ using AutoMapper;
 using MoviesRememberDao;
 using MoviesRememberDao.Interface;
 using MoviesRememberDB;
+using MoviesRememberServices.Utils;
 using Action = MoviesRememberDomain.Action;
 
 namespace MoviesRememberServices
@@ -21,15 +22,15 @@ namespace MoviesRememberServices
         public const int UserActionsLength = 50;
 
 
-        public UserService(IUserActionsDAO userActionDAO ,AbstractUserMovieDAO userMovieRepo)
+        public UserService(IUserActionsDAO userActionDAO, AbstractUserMovieDAO userMovieRepo)
         {
             _userMovieRepo = userMovieRepo;
             _userActionDAO = userActionDAO;
         }
 
-        public void AddMovie(Guid userId,string userName, Movie movie)
+        public void AddMovie(Guid userId, string userName, Movie movie)
         {
-            TinyMovie tinyMovie = (TinyMovie)movie; 
+            TinyMovie tinyMovie = (TinyMovie)movie;
             user_movie userMovie = Mapper.Map<TinyMovie, user_movie>(tinyMovie);
             userMovie.user_movie_user_id = userId;
 
@@ -55,7 +56,7 @@ namespace MoviesRememberServices
         {
             IList<UserMovie> result = new List<UserMovie>();
             IList<user_movie> dbResult = _userMovieRepo.GetByUserId(userId);
-            foreach(user_movie movie in dbResult)
+            foreach (user_movie movie in dbResult)
             {
                 result.Add(Mapper.Map<user_movie, UserMovie>(movie));
             }
@@ -65,10 +66,21 @@ namespace MoviesRememberServices
 
         public IList<UserAction> AddUserAction(UserAction action)
         {
-            IList<UserAction> userActions = _userActionDAO.AddActionAtFirstIndex(action);
-            if(userActions.Count == UserActionsLength)
+            IList<UserAction> userActions = new List<UserAction>();
+
+            try
             {
-                userActions = _userActionDAO.RemoveLastAction();
+                userActions = _userActionDAO.AddActionAtFirstIndex(action);
+                if (userActions.Count == UserActionsLength)
+                {
+                    userActions = _userActionDAO.RemoveLastAction();
+                }
+
+                return userActions;
+            }
+            catch (Exception ex)
+            {
+                new LogEvent(ex.Message).Raise();
             }
 
             return userActions;
