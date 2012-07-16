@@ -20,27 +20,38 @@ namespace MoviesRememberServices.Utils
         {
             string host = ConfigurationManager.AppSettings["REDISTOGO_URL"];
 
+
             ObjectFactory.Initialize(
                 x => x.Scan(
                     scan =>
                     {
                         scan.TheCallingAssembly();
                         scan.WithDefaultConventions();
-                        scan.LookForRegistries();   
+                        scan.LookForRegistries();
                     }));
 
             ObjectFactory.Container.Configure(
                 c => c.For<Database>().Use<MoviesRememberDBDB>()
                 );
 
+#if(RELEASE)
+            {
+            var url = new Uri(host);
             ObjectFactory.Container.Configure(
+                c => c.For<IRedisClient>().Use(new RedisClient(url))
+                );
+#else
+            {
+                ObjectFactory.Container.Configure(
                 c => c.For<IRedisClient>().Use(new RedisClient(host))
                 );
+            }
+#endif
 
             ObjectFactory.Container.Configure(
                 c => c.For<IUserActionsDAO>().Use<UserActionsDAO>()
                 );
-            
+
             ObjectFactory.Container.Configure(
                c => c.For<AbstractUserMovieDAO>().Use<UserMovieDAO>()
                );
