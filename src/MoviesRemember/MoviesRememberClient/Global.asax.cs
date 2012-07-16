@@ -48,6 +48,10 @@ namespace MoviesRememberClient
 
             InitializeContainer();
 
+            Bundle shared = new Bundle("~/Content/Shared/css");
+            shared.AddFile("~/Content/Shared/useraction.css");
+
+            BundleTable.Bundles.Add(shared);
             BundleTable.Bundles.RegisterTemplateBundles();
         }
 

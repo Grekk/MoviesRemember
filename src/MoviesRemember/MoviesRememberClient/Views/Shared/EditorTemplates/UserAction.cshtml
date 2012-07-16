@@ -3,22 +3,24 @@
 @{
     ViewBag.Title = "UserAction";
 }
-<fieldset style="margin: 5px;padding: 5px">
-    <p>@Model.UserName a 
-        @if(Model.Action == Action.ADD_MOVIE)
-        {
-            @:ajouté à sa liste
-        }
-        
-        @if(Model.Action == Action.DELETE_MOVIE)
-        {
-            @:retiré de sa liste
-        }
-        
-        @if(Model.Action == Action.SHOW_MOVIE)
-        {
-            @:consulté
-        }
-        le film @Html.ActionLink(Model.MovieName, "DisplayMovie", "Showing", new { code = Model.MovieId },null)
+<fieldset id="fldstUserAction">
+    <legend>
+        <label>
+            @Model.UserName
+            @if (Model.Action == Action.ADD_MOVIE)
+            {
+                @: ajoute
+                                    }
+            @if (Model.Action == Action.DELETE_MOVIE)
+            {
+                @: retire
+                                    }
+            @if (Model.Action == Action.SHOW_MOVIE)
+            {
+                @: consulte
+                                    }
+        </label>
+    </legend>
+    <p>@Html.ActionLink(Model.MovieName, "DisplayMovie", "Showing", new { code = Model.MovieId }, null)
     </p>
 </fieldset>
