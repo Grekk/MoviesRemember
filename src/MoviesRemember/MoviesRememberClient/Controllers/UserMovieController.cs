@@ -32,7 +32,7 @@ namespace MoviesRememberClient.Controllers
         {
             if (userMovie.ShouldDelete)
             {
-                _userService.DeleteMovie(userMovie.Id);
+                _userService.DeleteMovie(User.Identity.Name, userMovie);
             }
             else
             {

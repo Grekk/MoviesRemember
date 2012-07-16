@@ -41,9 +41,13 @@ namespace MoviesRememberServices
             AddUserAction(actionToAdd);
         }
 
-        public void DeleteMovie(long id)
+        public void DeleteMovie(string userName, UserMovie movie)
         {
-            _userMovieRepo.DeleteById(id);
+            _userMovieRepo.DeleteById(movie.Id);
+
+            UserAction actionToAdd = new UserAction(userName, movie);
+            actionToAdd.Action = Action.DELETE_MOVIE;
+            AddUserAction(actionToAdd);
         }
 
         public void UpdateMovie(UserMovie userMovie)

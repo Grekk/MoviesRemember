@@ -10,7 +10,7 @@ namespace MoviesRememberServices.Interface
     {
         void AddMovie(Guid userId, string userName, Movie movie);
 
-        void DeleteMovie (long id);
+        void DeleteMovie(string userName, UserMovie movie);
 
         void UpdateMovie(UserMovie movie);
 

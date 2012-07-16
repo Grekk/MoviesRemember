@@ -18,6 +18,13 @@ namespace MoviesRememberDomain
             MovieId = movie.ApiId.ToString();
         }
 
+        public UserAction(string userName, UserMovie movie)
+        {
+            UserName = userName;
+            MovieName = movie.Title;
+            MovieId = movie.ApiId.ToString();
+        }
+
         public string UserName { get; set; }
         public Action Action { get; set; }
         public string MovieName { get; set; }
