@@ -156,14 +156,6 @@
     <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\images\about.png" />
-    <Content Include="Content\themes\base\images\bg.png" />
-    <Content Include="Content\themes\base\images\codrops_back.png" />
-    <Content Include="Content\themes\base\jpaginate.css" />
-    <Content Include="Content\themes\base\images\next.png" />
-    <Content Include="Content\themes\base\images\previous.png" />
-    <Content Include="Content\themes\base\images\snext.png" />
-    <Content Include="Content\themes\base\images\sprevious.png" />
     <Content Include="Content\themes\base\jquery.ui.accordion.css" />
     <Content Include="Content\themes\base\jquery.ui.all.css" />
     <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
