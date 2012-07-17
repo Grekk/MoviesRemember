@@ -48,11 +48,14 @@ namespace MoviesRememberClient
 
             InitializeContainer();
 
-            Bundle shared = new Bundle("~/Content/Shared/css");
+            Bundle shared = new Bundle("~/Content/Shared/css", new CssMinify());
             shared.AddFile("~/Content/Shared/useraction.css");
+
 
             BundleTable.Bundles.Add(shared);
             BundleTable.Bundles.RegisterTemplateBundles();
+            Bundle bundle = BundleTable.Bundles.Where(x => x.Path == "~/Scripts/js").Single();
+            bundle.AddFile("~/Scripts/jquery.paging.min.js");
         }
 
         private static void InitializeContainer()

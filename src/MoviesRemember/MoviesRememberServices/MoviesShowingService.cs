@@ -16,8 +16,6 @@ namespace MoviesRememberServices
         private JavaScriptSerializer _jss;
         private readonly IMovieBuilder _movieBuilder;
 
-        private const int COUNT = 24;
-
         public MoviesShowingService(IMovieBuilder movieBuilder)
         {
             _jss = new JavaScriptSerializer();
@@ -31,7 +29,6 @@ namespace MoviesRememberServices
 
             string json = JsonUtils.GetJson(Properties.Resources.TOP_RANKED_MOVIES_NOW_SHOWING + numPage);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
-            result.TinyMovies.Count = COUNT;
 
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
@@ -51,7 +48,6 @@ namespace MoviesRememberServices
 
             string json = JsonUtils.GetJson(Properties.Resources.ORDER_BY_DATE_MOVIES_NOW_SHOWING + numPage);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
-            result.TinyMovies.Count = COUNT;
 
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
@@ -73,7 +69,6 @@ namespace MoviesRememberServices
 
             string json = JsonUtils.GetJson(Properties.Resources.TOP_RANKED_MOVIES_COMING_SOON + numPage);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
-            result.TinyMovies.Count = COUNT;
 
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
@@ -93,7 +88,6 @@ namespace MoviesRememberServices
 
             string json = JsonUtils.GetJson(Properties.Resources.ORDER_BY_DATE_MOVIES_COMING_SOON + numPage);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
-            result.TinyMovies.Count = COUNT;
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
             {
@@ -116,12 +110,6 @@ namespace MoviesRememberServices
         private void SetPaging(TinyMovieList movieList, dynamic feed)
         {
             movieList.TinyMovies.TotalResult = (int)feed.totalResults;
-            movieList.TinyMovies.TotalPage = movieList.TinyMovies.TotalResult / movieList.TinyMovies.Count;
-
-            if(movieList.TinyMovies.Count * movieList.TinyMovies.TotalPage != movieList.TinyMovies.TotalResult)
-            {
-                movieList.TinyMovies.TotalPage++;
-            }
         }
     }
 }

@@ -10,31 +10,27 @@ namespace MoviesRememberDomain
         public PagedList()
         {
             EntityList = new List<T>();
-            Page = 1;
+            CurrentPage = 1;
             TotalResult = 0;
             TotalPage = 1;
         }
 
         public IList<T> EntityList { get; set; }
 
-        public bool HasPreviousPage
+        public int CurrentPage { get; set; }
+        private int _count = 24;
+        public int Count
         {
             get
             {
-                return Page > 1;
+                return _count;
             }
-        }
-
-        public bool HasNextPage
-        {
-            get
+            set
             {
-                return Page + 1 <= TotalPage;
+                _count = value;
             }
         }
 
-        public int Page { get; set; }
-        public int Count { get; set; }
         public int TotalResult { get; set; }
         public int TotalPage { get; set; }
     }

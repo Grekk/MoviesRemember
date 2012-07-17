@@ -23,39 +23,36 @@ namespace MoviesRememberClient.Controllers
         //
         // GET: /Showing/
         [Authorize]
-        public ActionResult NowShowing(int numPage = 1)
+        public ActionResult NowShowing(int page = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByRate(numPage);
+            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByRate(page);
+            result.TinyMovies.CurrentPage = page;
             return View(result);
         }
 
         //
         // GET: /Showing/
         [Authorize]
-        public ActionResult NowShowingByDate(int numPage = 1)
+        public ActionResult NowShowingByDate(int page = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByDate(numPage);
-            return View(result);
-        }
-
-        //[Authorize]
-        //public ActionResult ComingSoon()
-        //{
-        //    TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate(1);
-        //    return View(result);
-        //}
-
-        [Authorize]
-        public ActionResult ComingSoon(int numPage = 1)
-        {
-            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate(numPage);
+            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByDate(page);
+            result.TinyMovies.CurrentPage = page;
             return View(result);
         }
 
         [Authorize]
-        public ActionResult ComingSoonByDate(int numPage = 1)
+        public ActionResult ComingSoon(int page = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByDate(numPage);
+            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate(page);
+            result.TinyMovies.CurrentPage = page;
+            return View(result);
+        }
+
+        [Authorize]
+        public ActionResult ComingSoonByDate(int page = 1)
+        {
+            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByDate(page);
+            result.TinyMovies.CurrentPage = page;
             return View(result);
         }
 
