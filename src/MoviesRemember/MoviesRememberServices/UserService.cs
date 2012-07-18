@@ -115,7 +115,7 @@ namespace MoviesRememberServices
             request.AddParameter("subscribed", true);
             request.Method = Method.POST;
             IRestResponse response = client.Execute(request);
-            return response.StatusCode != HttpStatusCode.Accepted;
+            return response.ResponseStatus == ResponseStatus.Completed;
         }
 
         public void SendMoviesReleased()
@@ -150,7 +150,6 @@ namespace MoviesRememberServices
 
         private void SendMessage(string message)
         {
-
             RestClient client = new RestClient();
             client.BaseUrl = "https://api.mailgun.net/v2";
             client.Authenticator =
@@ -165,7 +164,11 @@ namespace MoviesRememberServices
             request.AddParameter("subject", "Sortie ciné");
             request.AddParameter("html", message);
             request.Method = Method.POST;
-            client.Execute(request);
+            IRestResponse response = client.Execute(request);
+            if(response.ErrorException != null)
+            {
+                new LogEvent(response.ErrorException.Message).Raise();
+            }
         }
     }
 }
