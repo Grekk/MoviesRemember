@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MoviesRememberDomain;
+using RestSharp;
 
 namespace MoviesRememberServices.Interface
 {
@@ -19,5 +20,9 @@ namespace MoviesRememberServices.Interface
         IList<UserAction> AddUserAction(UserAction action);
 
         IList<UserAction> GetUsersActions();
+
+        bool AddNewMember(string email);
+
+        void SendMoviesReleased();
     }
 }

@@ -11,8 +11,8 @@ namespace MoviesRememberClient.Controllers
 {
     public class ShowingController : Controller
     {
-        private IMoviesShowingService _moviesShowingService;
-        private IUserService _userService;
+        private readonly IMoviesShowingService _moviesShowingService;
+        private readonly IUserService _userService;
 
         public ShowingController(IMoviesShowingService moviesShowingService, IUserService userService)
         {

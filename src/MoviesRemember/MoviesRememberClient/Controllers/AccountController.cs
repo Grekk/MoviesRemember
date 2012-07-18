@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using MoviesRememberClient.Models;
+using MoviesRememberServices.Interface;
 
 namespace MoviesRememberClient.Controllers
 {
@@ -12,6 +13,13 @@ namespace MoviesRememberClient.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly IUserService _userService;
+
+        public AccountController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         //
         // GET: /Account/Login
 
@@ -107,6 +115,7 @@ namespace MoviesRememberClient.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, createPersistentCookie: false);
+                    _userService.AddNewMember(model.Email);
                     return Json(new { success = true });
                 }
                 else
@@ -135,6 +144,7 @@ namespace MoviesRememberClient.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, createPersistentCookie: false);
+                    _userService.AddNewMember(model.Email);
                     return RedirectToAction("MyList", "UserMovie");
                 }
                 else

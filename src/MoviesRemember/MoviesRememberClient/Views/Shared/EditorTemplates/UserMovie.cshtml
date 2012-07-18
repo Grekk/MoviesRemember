@@ -2,12 +2,33 @@
 @{
     ViewBag.Title = "UserMovie";
 }
-@using (Html.BeginForm("UpdateUserMovie", "UserMovie"))
-{
-    <section class="feature">
+<section class="feature">
 <div>
+<table>
+<tr>
+<td>
     <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })"><img src="@Model.PictureUrl" height="193" width="143"/></a>
+</td>
+<td valign="baseline">
+@using (Html.BeginForm("DeleteUserMovie", "UserMovie"))
+{
+        @Html.HiddenFor(x => x.ApiId)
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.PictureUrl)
+    @Html.HiddenFor(x => x.ReleaseDate)
+    @Html.HiddenFor(x => x.UserId)
+    @Html.HiddenFor(x => x.Title)
+        <input type="image" src="../../../Images/supprimer-icone-3922-32.png">
+        </input>
+}
+    </td>
+</tr>
+</table>
     <h4>@Model.Title</h4>
+    <p>
+    </p>
+    @using (Html.BeginForm("UpdateUserMovie", "UserMovie"))
+    {
     <p>
     @Html.LabelFor(x => x.ReleaseDate)
     @Html.DisplayFor(x => x.ReleaseDate)
@@ -16,10 +37,6 @@
     @Html.LabelFor(x => x.Rate)
     @Html.TextBoxFor(x => x.Rate)
     </p>
-    <p>
-    @Html.LabelFor(x => x.ShouldDelete)
-    @Html.CheckBoxFor(x => x.ShouldDelete)
-    </p>
     @Html.HiddenFor(x => x.ApiId)
     @Html.HiddenFor(x => x.Id)
     @Html.HiddenFor(x => x.PictureUrl)
@@ -27,6 +44,6 @@
     @Html.HiddenFor(x => x.UserId)
     @Html.HiddenFor(x => x.Title)
     <input type="submit" value="Update" />
+    }
 </div>
 </section>
-}

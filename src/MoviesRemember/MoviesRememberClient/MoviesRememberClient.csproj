@@ -176,6 +176,7 @@
     <Content Include="Images\bar.gif" />
     <Content Include="Images\invbar.gif" />
     <Content Include="Images\no_image.gif" />
+    <Content Include="Images\supprimer-icone-3922-32.png" />
     <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.2.js" />
     <Content Include="Scripts\jquery-1.6.2.min.js" />

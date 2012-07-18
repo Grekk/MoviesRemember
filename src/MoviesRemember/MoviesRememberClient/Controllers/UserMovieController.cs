@@ -28,17 +28,18 @@ namespace MoviesRememberClient.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public ActionResult DeleteUserMovie(UserMovie userMovie)
+        {
+            _userService.DeleteMovie(User.Identity.Name, userMovie);
+            return RedirectToAction("MyList");
+        }
+
+        [Authorize]
+        [HttpPost]
         public ActionResult UpdateUserMovie(UserMovie userMovie)
         {
-            if (userMovie.ShouldDelete)
-            {
-                _userService.DeleteMovie(User.Identity.Name, userMovie);
-            }
-            else
-            {
-                _userService.UpdateMovie(userMovie);
-            }
-
+            _userService.UpdateMovie(userMovie);
             return RedirectToAction("MyList");
         }
     }
