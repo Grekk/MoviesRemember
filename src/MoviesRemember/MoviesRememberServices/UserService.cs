@@ -14,6 +14,7 @@ using MoviesRememberDB;
 using MoviesRememberServices.Utils;
 using RestSharp;
 using Action = MoviesRememberDomain.Action;
+using SharpBrake;
 
 namespace MoviesRememberServices
 {
@@ -64,6 +65,7 @@ namespace MoviesRememberServices
 
         public IList<UserMovie> GetUserMovieList(Guid userId)
         {
+            new Exception("Airbrake ok").SendToAirbrake();
             IList<UserMovie> result = new List<UserMovie>();
             IList<user_movie> dbResult = _userMovieRepo.GetByUserId(userId);
             foreach (user_movie movie in dbResult)
@@ -120,36 +122,49 @@ namespace MoviesRememberServices
 
         public void SendMoviesReleased()
         {
-            string htmlContent = "<html><body><p>Voici la liste des films conseillés qui sortent aujourd'hui:</p><section>";
-            TinyMovieList movieListByDate = _moviesService.GetNowShowingMoviesByDate(1);
-            TinyMovieList movieListByRate = _moviesService.GetNowShowingMoviesByRate(1);
-            IList<TinyMovie> topMoviesRateList = new List<TinyMovie>();
-
-            for (int i = 0; i < 10; i++)
+            try
             {
-                topMoviesRateList.Add(movieListByRate.TinyMovies.EntityList[i]);
-            }
+                string htmlContent = "<html><body><p>Voici la liste des films conseillés qui sortent aujourd'hui:</p><section>";
+                TinyMovieList movieListByDate = _moviesService.GetNowShowingMoviesByDate(1);
+                TinyMovieList movieListByRate = _moviesService.GetNowShowingMoviesByRate(1);
+                IList<TinyMovie> topMoviesRateList = new List<TinyMovie>();
 
-
-            string url = ConfigurationManager.AppSettings["MOVIE_URL"];
-
-            foreach (TinyMovie movie in movieListByDate.TinyMovies.EntityList.Where(x => x.ReleaseDate == DateTime.Today.Date))
-            {
-                if (movie.PressRatings >= 3 || topMoviesRateList.Where(r => r.ApiId == movie.ApiId).SingleOrDefault() != null)
+                for (int i = 0; i < 10; i++)
                 {
-                    htmlContent += "<section style=\"width: 200px;height: 500px;float: left;padding: 10px;\">";
-                    htmlContent += "<a href=\"" + url + movie.ApiId + "\"><img src=\"" + movie.PictureUrl + "\" height=\"193\" width=\"143\"/></a>";
-                    htmlContent += "</section>";
+                    topMoviesRateList.Add(movieListByRate.TinyMovies.EntityList[i]);
                 }
+
+
+                string url = ConfigurationManager.AppSettings["MOVIE_URL"];
+
+                foreach (TinyMovie movie in movieListByDate.TinyMovies.EntityList.Where(x => x.ReleaseDate == DateTime.Today.Date))
+                {
+                    if (movie.PressRatings >= 3 || topMoviesRateList.Where(r => r.ApiId == movie.ApiId).SingleOrDefault() != null)
+                    {
+                        htmlContent += "<section style=\"width: 200px;height: 500px;float: left;padding: 10px;\">";
+                        htmlContent += "<a href=\"" + url + movie.ApiId + "\"><img src=\"" + movie.PictureUrl + "\" height=\"193\" width=\"143\"/></a>";
+                        htmlContent += "</section>";
+                    }
+                }
+
+                htmlContent += "</section></body></html>";
+
+                SendMessage(htmlContent);
             }
-
-            htmlContent += "</section></body></html>";
-
-            SendMessage(htmlContent);
+            catch (Exception e)
+            {
+                e.SendToAirbrake();
+            }
         }
 
         private void SendMessage(string message)
         {
+            string mess = "Send Message :" + ConfigurationManager.AppSettings["MAILGUN_API_KEY"] + " : " +
+                          ConfigurationManager.AppSettings["MAIL_DOMAIN"] + " : " +
+                          ConfigurationManager.AppSettings["MAILING_LIST"];
+            Exception e = new Exception(mess);
+            e.SendToAirbrake();
+
             RestClient client = new RestClient();
             client.BaseUrl = "https://api.mailgun.net/v2";
             client.Authenticator =
@@ -165,9 +180,9 @@ namespace MoviesRememberServices
             request.AddParameter("html", message);
             request.Method = Method.POST;
             IRestResponse response = client.Execute(request);
-            if(response.ErrorException != null)
+            if (response.ErrorException != null)
             {
-                new LogEvent(response.ErrorException.Message).Raise();
+                response.ErrorException.SendToAirbrake();
             }
         }
     }
