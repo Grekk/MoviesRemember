@@ -58,9 +58,9 @@ namespace MoviesRememberClient
             bundle.AddFile("~/Scripts/jquery.paging.min.js");
         }
 
-        private static void InitializeContainer()
+        private void InitializeContainer()
         {
-            Bootstrapper.Bootstrap();
+            new Bootstrapper().Bootstrap();
             StructureMapDependencyResolver structureMapDependencyResolver = new StructureMapDependencyResolver();
             DependencyResolver.SetResolver(structureMapDependencyResolver);
         }

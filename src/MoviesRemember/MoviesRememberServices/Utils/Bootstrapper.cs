@@ -16,9 +16,9 @@ using ServiceStack.Redis;
 
 namespace MoviesRememberServices.Utils
 {
-    public static class Bootstrapper
+    public class Bootstrapper
     {
-        private static void RegisterDependencies()
+        private void RegisterDependencies()
         {
             string host = ConfigurationManager.AppSettings["REDISTOGO_URL"];
             int port = int.Parse(ConfigurationManager.AppSettings["REDISTOGO_PORT"]);
@@ -66,7 +66,7 @@ namespace MoviesRememberServices.Utils
 #endif
         }
 
-        private static void InitializeMapper()
+        private void InitializeMapper()
         {
             Mapper.CreateMap<TinyMovie, user_movie>()
                 .ForMember(dest => dest.user_movie_picture, opt => opt.MapFrom(src => src.PictureUrl))
@@ -101,14 +101,14 @@ namespace MoviesRememberServices.Utils
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.user_movie_title));
         }
 
-        public static void Bootstrap()
+        public void Bootstrap()
         {
             RegisterDependencies();
             InitializeMapper();
             InitializeJobScheduler();
         }
 
-        private static void InitializeJobScheduler()
+        private void InitializeJobScheduler()
         {
             new LogEvent("InitializeJobScheduler").Raise();
 
