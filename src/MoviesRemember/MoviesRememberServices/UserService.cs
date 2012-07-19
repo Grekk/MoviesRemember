@@ -122,6 +122,7 @@ namespace MoviesRememberServices
 
         public void SendMoviesReleased()
         {
+            new LogEvent("Envoyé !!").Raise();
             string url = ConfigurationManager.AppSettings["MOVIE_URL"];
             string htmlContent = "<html><body><p>Voici la liste des films conseillés qui sortent aujourd'hui:</p><section>";
 
@@ -136,7 +137,6 @@ namespace MoviesRememberServices
 
             SendMessage(htmlContent);
 
-            new LogEvent("Envoyé !!").Raise();
         }
 
         private void SendMessage(string message)

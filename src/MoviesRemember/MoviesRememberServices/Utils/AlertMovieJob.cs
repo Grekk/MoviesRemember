@@ -17,9 +17,11 @@ namespace MoviesRememberServices.Utils
 
         public void Execute(IJobExecutionContext context)
         {
-            new Exception("Execute Job").SendToAirbrake();
+            new LogEvent("Execute").Raise();
+
             IUserService userService = ObjectFactory.GetInstance<IUserService>();
             userService.SendMoviesReleased();
+            new LogEvent("End Execute").Raise();
         }
     }
 }
