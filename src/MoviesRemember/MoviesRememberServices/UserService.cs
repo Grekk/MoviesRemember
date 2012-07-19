@@ -122,28 +122,21 @@ namespace MoviesRememberServices
 
         public void SendMoviesReleased()
         {
-            try
+            string url = ConfigurationManager.AppSettings["MOVIE_URL"];
+            string htmlContent = "<html><body><p>Voici la liste des films conseillés qui sortent aujourd'hui:</p><section>";
+
+            foreach (TinyMovie movie in _moviesService.GetBestWeekMovies())
             {
-                string url = ConfigurationManager.AppSettings["MOVIE_URL"];
-                string htmlContent = "<html><body><p>Voici la liste des films conseillés qui sortent aujourd'hui:</p><section>";
-
-                foreach (TinyMovie movie in _moviesService.GetBestWeekMovies())
-                {
-                    htmlContent += "<section style=\"width: 200px;height: 500px;float: left;padding: 10px;\">";
-                    htmlContent += "<a href=\"" + url + movie.ApiId + "\"><img src=\"" + movie.PictureUrl + "\" height=\"193\" width=\"143\"/></a>";
-                    htmlContent += "</section>";
-                }
-
-                htmlContent += "</section></body></html>";
-
-                SendMessage(htmlContent);
-
-                new LogEvent("Envoyé !!").Raise();
+                htmlContent += "<section style=\"width: 200px;height: 500px;float: left;padding: 10px;\">";
+                htmlContent += "<a href=\"" + url + movie.ApiId + "\"><img src=\"" + movie.PictureUrl + "\" height=\"193\" width=\"143\"/></a>";
+                htmlContent += "</section>";
             }
-            catch (Exception e)
-            {
-                e.SendToAirbrake();
-            }
+
+            htmlContent += "</section></body></html>";
+
+            SendMessage(htmlContent);
+
+            new LogEvent("Envoyé !!").Raise();
         }
 
         private void SendMessage(string message)
