@@ -124,7 +124,7 @@ namespace MoviesRememberServices.Utils
 
             ITrigger trigger = TriggerBuilder.Create()
             .WithIdentity("trigger1", "group1")
-            .WithCronSchedule("0 37 11 ? * *")
+            .WithCronSchedule("0 20 12 ? * *")
             .Build();
 
             sched.ScheduleJob(job, trigger);

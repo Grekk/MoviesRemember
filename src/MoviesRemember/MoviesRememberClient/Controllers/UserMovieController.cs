@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using MoviesRememberServices.Interface;
 using System.Web.Security;
 using MoviesRememberDomain;
+using MoviesRememberServices.Utils;
 
 namespace MoviesRememberClient.Controllers
 {
@@ -22,7 +23,7 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult MyList()
         {
-            _userService.SendMoviesReleased();
+            new Bootstrapper().InitializeJobScheduler();
             IList<UserMovie> model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey);
             return View(model);
         }

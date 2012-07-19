@@ -61,6 +61,7 @@ namespace MoviesRememberClient
         private void InitializeContainer()
         {
             new Bootstrapper().Bootstrap();
+
             StructureMapDependencyResolver structureMapDependencyResolver = new StructureMapDependencyResolver();
             DependencyResolver.SetResolver(structureMapDependencyResolver);
         }
