@@ -65,7 +65,7 @@ namespace MoviesRememberServices
 
         public IList<UserMovie> GetUserMovieList(Guid userId)
         {
-            new Exception("Airbrake ok").SendToAirbrake();
+            new LogEvent("Log ok").Raise();
             IList<UserMovie> result = new List<UserMovie>();
             IList<user_movie> dbResult = _userMovieRepo.GetByUserId(userId);
             foreach (user_movie movie in dbResult)
