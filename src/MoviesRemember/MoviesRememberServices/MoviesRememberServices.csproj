@@ -59,9 +59,6 @@
     <Reference Include="ServiceStack.Text">
       <HintPath>..\packages\ServiceStack.Text.3.8.7\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
-    <Reference Include="SharpBrake">
-      <HintPath>..\packages\SharpBrake.2.2.0.0\lib\net35\SharpBrake.dll</HintPath>
-    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>

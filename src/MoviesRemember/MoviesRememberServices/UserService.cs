@@ -14,7 +14,6 @@ using MoviesRememberDB;
 using MoviesRememberServices.Utils;
 using RestSharp;
 using Action = MoviesRememberDomain.Action;
-using SharpBrake;
 
 namespace MoviesRememberServices
 {
@@ -145,8 +144,6 @@ namespace MoviesRememberServices
             string mess = "Send Message :" + ConfigurationManager.AppSettings["MAILGUN_API_KEY"] + " : " +
                           ConfigurationManager.AppSettings["MAIL_DOMAIN"] + " : " +
                           ConfigurationManager.AppSettings["MAILING_LIST"];
-            Exception e = new Exception(mess);
-            e.SendToAirbrake();
 
             RestClient client = new RestClient();
             client.BaseUrl = "https://api.mailgun.net/v2";
@@ -165,7 +162,7 @@ namespace MoviesRememberServices
             IRestResponse response = client.Execute(request);
             if (response.ErrorException != null)
             {
-                response.ErrorException.SendToAirbrake();
+                new LogEvent(response.ErrorMessage).Raise();
             }
         }
     }

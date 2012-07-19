@@ -105,12 +105,11 @@ namespace MoviesRememberServices.Utils
         {
             RegisterDependencies();
             InitializeMapper();
-            InitializeJobScheduler();
         }
 
-        private void InitializeJobScheduler()
+        public void InitializeJobScheduler()
         {
-            new LogEvent("InitializeJobScheduler").Raise();
+            //new LogEvent("InitializeJobScheduler").Raise();
 
             // construct a scheduler factory
             ISchedulerFactory schedFact = new StdSchedulerFactory();
@@ -125,12 +124,12 @@ namespace MoviesRememberServices.Utils
 
             ITrigger trigger = TriggerBuilder.Create()
             .WithIdentity("trigger1", "group1")
-            .WithCronSchedule("0 4 11 ? * *")
+            .WithCronSchedule("0 37 11 ? * *")
             .Build();
 
             sched.ScheduleJob(job, trigger);
 
-            new LogEvent("End InitializeJobScheduler").Raise();
+            //new LogEvent("End InitializeJobScheduler").Raise();
         }
     }
 }

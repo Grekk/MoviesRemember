@@ -5,7 +5,6 @@ using System.Text;
 using MoviesRememberServices.Interface;
 using Quartz;
 using StructureMap;
-using SharpBrake;
 
 namespace MoviesRememberServices.Utils
 {
