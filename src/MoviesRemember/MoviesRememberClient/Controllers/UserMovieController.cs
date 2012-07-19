@@ -22,7 +22,7 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult MyList()
         {
-            ViewBag.UsersActions = _userService.GetUsersActions();
+            _userService.SendMoviesReleased();
             IList<UserMovie> model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey);
             return View(model);
         }
