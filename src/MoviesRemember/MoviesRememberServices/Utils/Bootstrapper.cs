@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using MoviesRememberServices.Interface;
 using Quartz;
 using Quartz.Impl;
 using StructureMap;
@@ -107,55 +105,32 @@ namespace MoviesRememberServices.Utils
         {
             RegisterDependencies();
             InitializeMapper();
-            Thread t = new Thread(InitializeJobScheduler);
-            t.Start();
+            //InitializeJobScheduler();
         }
 
         public void InitializeJobScheduler()
         {
-            new LogEvent("Start Thread").Raise();
-            IUserService userService = ObjectFactory.GetInstance<UserService>();
-            bool hasEverSendMail = false;
-            while (Thread.CurrentThread.IsAlive)
-            {
-                if (DateTime.Now.DayOfWeek == DayOfWeek.Thursday)
-                {
-                    new LogEvent("Thursday").Raise();
-                    if (!hasEverSendMail)
-                    {
-                        new LogEvent("Send mail: " + DateTime.Now).Raise();
-                        userService.SendMoviesReleased();
-                        hasEverSendMail = true;
-                    }
-                    Thread.Sleep(43200000);
-                }
-                else
-                {
-                    hasEverSendMail = false;
-                }
+            //new LogEvent("InitializeJobScheduler").Raise();
 
-                ////new LogEvent("InitializeJobScheduler").Raise();
+            // construct a scheduler factory
+            ISchedulerFactory schedFact = new StdSchedulerFactory();
 
-                //// construct a scheduler factory
-                //ISchedulerFactory schedFact = new StdSchedulerFactory();
+            // get a scheduler
+            IScheduler sched = schedFact.GetScheduler();
+            sched.Start();
 
-                //// get a scheduler
-                //IScheduler sched = schedFact.GetScheduler();
-                //sched.Start();
+            IJobDetail job = JobBuilder.Create<AlertMovieJob>()
+             .WithIdentity("job1", "group1")
+             .Build();
 
-                //IJobDetail job = JobBuilder.Create<AlertMovieJob>()
-                //    .WithIdentity("job1", "group1")
-                //    .Build();
+            ITrigger trigger = TriggerBuilder.Create()
+            .WithIdentity("trigger1", "group1")
+            .WithCronSchedule("0 37 11 ? * *")
+            .Build();
 
-                //ITrigger trigger = TriggerBuilder.Create()
-                //    .WithIdentity("trigger1", "group1")
-                //    .WithCronSchedule("0 20 12 ? * *")
-                //    .Build();
+            sched.ScheduleJob(job, trigger);
 
-                //sched.ScheduleJob(job, trigger);
-
-                //new LogEvent("End InitializeJobScheduler").Raise();
-            }
+            //new LogEvent("End InitializeJobScheduler").Raise();
         }
     }
 }

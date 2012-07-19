@@ -23,7 +23,6 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult MyList()
         {
-            new Bootstrapper().InitializeJobScheduler();
             IList<UserMovie> model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey);
             return View(model);
         }
