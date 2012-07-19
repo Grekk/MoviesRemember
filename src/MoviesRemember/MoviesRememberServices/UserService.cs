@@ -124,32 +124,21 @@ namespace MoviesRememberServices
         {
             try
             {
-                string htmlContent = "<html><body><p>Voici la liste des films conseillés qui sortent aujourd'hui:</p><section>";
-                TinyMovieList movieListByDate = _moviesService.GetNowShowingMoviesByDate(1);
-                TinyMovieList movieListByRate = _moviesService.GetNowShowingMoviesByRate(1);
-                IList<TinyMovie> topMoviesRateList = new List<TinyMovie>();
-
-                for (int i = 0; i < 10; i++)
-                {
-                    topMoviesRateList.Add(movieListByRate.TinyMovies.EntityList[i]);
-                }
-
-
                 string url = ConfigurationManager.AppSettings["MOVIE_URL"];
+                string htmlContent = "<html><body><p>Voici la liste des films conseillés qui sortent aujourd'hui:</p><section>";
 
-                foreach (TinyMovie movie in movieListByDate.TinyMovies.EntityList.Where(x => x.ReleaseDate == DateTime.Today.Date))
+                foreach (TinyMovie movie in _moviesService.GetBestWeekMovies())
                 {
-                    if (movie.PressRatings >= 3 || topMoviesRateList.Where(r => r.ApiId == movie.ApiId).SingleOrDefault() != null)
-                    {
-                        htmlContent += "<section style=\"width: 200px;height: 500px;float: left;padding: 10px;\">";
-                        htmlContent += "<a href=\"" + url + movie.ApiId + "\"><img src=\"" + movie.PictureUrl + "\" height=\"193\" width=\"143\"/></a>";
-                        htmlContent += "</section>";
-                    }
+                    htmlContent += "<section style=\"width: 200px;height: 500px;float: left;padding: 10px;\">";
+                    htmlContent += "<a href=\"" + url + movie.ApiId + "\"><img src=\"" + movie.PictureUrl + "\" height=\"193\" width=\"143\"/></a>";
+                    htmlContent += "</section>";
                 }
 
                 htmlContent += "</section></body></html>";
 
                 SendMessage(htmlContent);
+
+                new LogEvent("Envoyé !!").Raise();
             }
             catch (Exception e)
             {

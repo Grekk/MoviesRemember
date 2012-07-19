@@ -14,6 +14,8 @@ namespace MoviesRememberServices.Interface
         TinyMovieList GetComingSoonMoviesByRate(int numPage);
         TinyMovieList GetComingSoonMoviesByDate(int numPage);
 
+        IList<TinyMovie> GetBestWeekMovies();
+
         Movie GetMovie(long code);
     }
 }
