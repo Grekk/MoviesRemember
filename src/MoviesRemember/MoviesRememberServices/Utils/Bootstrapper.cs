@@ -24,6 +24,8 @@ namespace MoviesRememberServices.Utils
             int port = int.Parse(ConfigurationManager.AppSettings["REDISTOGO_PORT"]);
             string pwd = ConfigurationManager.AppSettings["REDISTOGO_PWD"];
 
+            new LogEvent("Password: " + pwd).Raise();
+
 
             ObjectFactory.Initialize(
                 x => x.Scan(
