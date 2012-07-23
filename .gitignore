@@ -1,7 +1,12 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 bin
 obj
+<<<<<<< HEAD
 src/MoviesRemember/MoviesRemember.suo
+=======
+_ReSharper.MoviesRemember
+*.user
+>>>>>>> e6d0178da1b6019e9a358b500eac3fcf9e0709d0
 
 # mstest test results
 TestResults

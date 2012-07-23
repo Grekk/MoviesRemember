@@ -1,34 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
+using Quartz;
+using Quartz.Impl;
 using StructureMap;
 using PetaPoco;
 using MoviesRememberDomain;
-using DefaultConnection;
 using AutoMapper;
 using MoviesRememberDao.Interface;
 using MoviesRememberDao;
+using MoviesRememberDB;
+using ServiceStack.Redis;
 
 namespace MoviesRememberServices.Utils
 {
-    public static class Bootstrapper
+    public class Bootstrapper
     {
-        private static void RegisterDependencies()
+        private void RegisterDependencies()
         {
+            string host = ConfigurationManager.AppSettings["REDISTOGO_URL"];
+            int port = int.Parse(ConfigurationManager.AppSettings["REDISTOGO_PORT"]);
+            string pwd = ConfigurationManager.AppSettings["REDISTOGO_PWD"];
+
+
             ObjectFactory.Initialize(
                 x => x.Scan(
                     scan =>
                     {
                         scan.TheCallingAssembly();
                         scan.WithDefaultConventions();
-                        scan.LookForRegistries();   
+                        scan.LookForRegistries();
                     }));
 
             ObjectFactory.Container.Configure(
-                c => c.For<Database>().Use<DefaultConnectionDB>()
+                c => c.For<Database>().Use<MoviesRememberDBDB>()
                 );
-            
+
+            if (ConfigurationManager.AppSettings["Environment"] == "Release")
+            {
+                var url = new Uri(host);
+                ObjectFactory.Container.Configure(
+                    c => c.For<IRedisClient>().Use(new RedisClient(url))
+                    );
+            }
+            else
+            {
+                ObjectFactory.Container.Configure(
+                    c => c.For<IRedisClient>().Use(new RedisClient(host, port, pwd))
+                    );
+            }
+
+            ObjectFactory.Container.Configure(
+                c => c.For<IUserActionsDAO>().Use<UserActionsDAO>()
+                );
+
             ObjectFactory.Container.Configure(
                c => c.For<AbstractUserMovieDAO>().Use<UserMovieDAO>()
                );
@@ -39,7 +66,7 @@ namespace MoviesRememberServices.Utils
 #endif
         }
 
-        private static void InitializeMapper()
+        private void InitializeMapper()
         {
             Mapper.CreateMap<TinyMovie, user_movie>()
                 .ForMember(dest => dest.user_movie_picture, opt => opt.MapFrom(src => src.PictureUrl))
@@ -74,10 +101,36 @@ namespace MoviesRememberServices.Utils
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.user_movie_title));
         }
 
-        public static void Bootstrap()
+        public void Bootstrap()
         {
             RegisterDependencies();
             InitializeMapper();
+            //InitializeJobScheduler();
+        }
+
+        public void InitializeJobScheduler()
+        {
+            //new LogEvent("InitializeJobScheduler").Raise();
+
+            // construct a scheduler factory
+            ISchedulerFactory schedFact = new StdSchedulerFactory();
+
+            // get a scheduler
+            IScheduler sched = schedFact.GetScheduler();
+            sched.Start();
+
+            IJobDetail job = JobBuilder.Create<AlertMovieJob>()
+             .WithIdentity("job1", "group1")
+             .Build();
+
+            ITrigger trigger = TriggerBuilder.Create()
+            .WithIdentity("trigger1", "group1")
+            .WithCronSchedule("0 37 11 ? * *")
+            .Build();
+
+            sched.ScheduleJob(job, trigger);
+
+            //new LogEvent("End InitializeJobScheduler").Raise();
         }
     }
 }

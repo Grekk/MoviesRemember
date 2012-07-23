@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using MoviesRememberDomain;
 using MoviesRememberDao.Interface;
-using DefaultConnection;
 using AutoMapper;
+using MoviesRememberDB;
 
 namespace MoviesRememberDao
 {

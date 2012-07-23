@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesRememberDao", "Movies
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesRememberTest", "MoviesRememberTest\MoviesRememberTest.csproj", "{28C8AF5D-8C42-45AB-9314-1B359E31CBBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAPI", "MovieAPI\MovieAPI.csproj", "{42618C05-A49D-4418-AE5E-D9C275CF4F3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{28C8AF5D-8C42-45AB-9314-1B359E31CBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C8AF5D-8C42-45AB-9314-1B359E31CBBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28C8AF5D-8C42-45AB-9314-1B359E31CBBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42618C05-A49D-4418-AE5E-D9C275CF4F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42618C05-A49D-4418-AE5E-D9C275CF4F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42618C05-A49D-4418-AE5E-D9C275CF4F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42618C05-A49D-4418-AE5E-D9C275CF4F3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

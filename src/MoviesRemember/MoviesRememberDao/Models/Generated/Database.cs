@@ -4,9 +4,9 @@
 // 
 // The following connection settings were used to generate this file
 // 
-//     Connection String Name: `DefaultConnection`
+//     Connection String Name: `MoviesRememberDB`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Server=304b0b5d-c557-43e5-8f04-a05f00aca108.sqlserver.sequelizer.com;Database=db304b0b5dc55743e58f04a05f00aca108;User ID=hlymwlymaizejlbq;Password=PjejfbGJf4E5DkEANPDdyKBH7KAceW6HasoWPg6q3ux83c8YWCEP68neQDmCGDEq`
+//     Connection String:      `Server=304b0b5d-c557-43e5-8f04-a05f00aca108.sqlserver.sequelizer.com;Database=db304b0b5dc55743e58f04a05f00aca108;User ID=hlymwlymaizejlbq;password=**zapped**;`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -16,12 +16,12 @@ using System.Linq;
 using System.Web;
 using PetaPoco;
 
-namespace DefaultConnection
+namespace MoviesRememberDB
 {
-	public partial class DefaultConnectionDB : Database
+	public partial class MoviesRememberDBDB : Database
 	{
-		public DefaultConnectionDB() 
-			: base("DefaultConnection")
+		public MoviesRememberDBDB() 
+			: base("MoviesRememberDB")
 		{
 			CommonConstruct();
 		}
@@ -30,11 +30,11 @@ namespace DefaultConnection
 		
 		public interface IFactory
 		{
-			DefaultConnectionDB GetInstance();
+			MoviesRememberDBDB GetInstance();
 		}
 		
 		public static IFactory Factory { get; set; }
-        public static DefaultConnectionDB GetInstance()
+        public static MoviesRememberDBDB GetInstance()
         {
 			if (_instance!=null)
 				return _instance;
@@ -42,10 +42,10 @@ namespace DefaultConnection
 			if (Factory!=null)
 				return Factory.GetInstance();
 			else
-				return new DefaultConnectionDB();
+				return new MoviesRememberDBDB();
         }
 
-		[ThreadStatic] static DefaultConnectionDB _instance;
+		[ThreadStatic] static MoviesRememberDBDB _instance;
 		
 		public override void OnBeginTransaction()
 		{
@@ -61,7 +61,7 @@ namespace DefaultConnection
         
 		public class Record<T> where T:new()
 		{
-			public static DefaultConnectionDB repo { get { return DefaultConnectionDB.GetInstance(); } }
+			public static MoviesRememberDBDB repo { get { return MoviesRememberDBDB.GetInstance(); } }
 			public bool IsNew() { return repo.IsNew(this); }
 			public object Insert() { return repo.Insert(this); }
 			public int Update(IEnumerable<string> columns) { return repo.Update(this, columns); }
@@ -127,7 +127,7 @@ namespace DefaultConnection
 	[TableName("Memberships")]
 	[PrimaryKey("UserId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class Membership : DefaultConnectionDB.Record<Membership>  
+    public partial class Membership : MoviesRememberDBDB.Record<Membership>  
     {
         [Column] 
 		public Guid ApplicationId 
@@ -419,7 +419,7 @@ namespace DefaultConnection
 	[TableName("Profiles")]
 	[PrimaryKey("UserId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class Profile : DefaultConnectionDB.Record<Profile>  
+    public partial class Profile : MoviesRememberDBDB.Record<Profile>  
     {
         [Column] 
 		public Guid UserId 
@@ -501,7 +501,7 @@ namespace DefaultConnection
 	[TableName("Roles")]
 	[PrimaryKey("RoleId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class Role : DefaultConnectionDB.Record<Role>  
+    public partial class Role : MoviesRememberDBDB.Record<Role>  
     {
         [Column] 
 		public Guid ApplicationId 
@@ -568,7 +568,7 @@ namespace DefaultConnection
 	[TableName("Users")]
 	[PrimaryKey("UserId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class User : DefaultConnectionDB.Record<User>  
+    public partial class User : MoviesRememberDBDB.Record<User>  
     {
         [Column] 
 		public Guid ApplicationId 
@@ -650,7 +650,7 @@ namespace DefaultConnection
 	[TableName("UsersInRoles")]
 	[PrimaryKey("UserId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class UsersInRole : DefaultConnectionDB.Record<UsersInRole>  
+    public partial class UsersInRole : MoviesRememberDBDB.Record<UsersInRole>  
     {
         [Column] 
 		public Guid UserId 
@@ -687,7 +687,7 @@ namespace DefaultConnection
 	[TableName("user_movie")]
 	[PrimaryKey("user_movie_id")]
 	[ExplicitColumns]
-    public partial class user_movie : DefaultConnectionDB.Record<user_movie>  
+    public partial class user_movie : MoviesRememberDBDB.Record<user_movie>  
     {
         [Column] 
 		public long user_movie_id 
@@ -799,7 +799,7 @@ namespace DefaultConnection
 	[TableName("Applications")]
 	[PrimaryKey("ApplicationId", autoIncrement=false)]
 	[ExplicitColumns]
-    public partial class Application : DefaultConnectionDB.Record<Application>  
+    public partial class Application : MoviesRememberDBDB.Record<Application>  
     {
         [Column] 
 		public string ApplicationName 

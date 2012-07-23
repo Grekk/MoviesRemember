@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -48,12 +49,19 @@ namespace MoviesRememberClient
 
             InitializeContainer();
 
+            Bundle shared = new Bundle("~/Content/Shared/css", new CssMinify());
+            shared.AddFile("~/Content/Shared/useraction.css");
+
+
+            BundleTable.Bundles.Add(shared);
             BundleTable.Bundles.RegisterTemplateBundles();
+            Bundle bundle = BundleTable.Bundles.Where(x => x.Path == "~/Scripts/js").Single();
+            bundle.AddFile("~/Scripts/jquery.paging.min.js");
         }
 
-        private static void InitializeContainer()
+        private void InitializeContainer()
         {
-            Bootstrapper.Bootstrap();
+            new Bootstrapper().Bootstrap();
             StructureMapDependencyResolver structureMapDependencyResolver = new StructureMapDependencyResolver();
             DependencyResolver.SetResolver(structureMapDependencyResolver);
         }

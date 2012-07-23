@@ -15,7 +15,6 @@ namespace MoviesRememberServices
     {
         private JavaScriptSerializer _jss;
         private readonly IMovieBuilder _movieBuilder;
-        
 
         public MoviesShowingService(IMovieBuilder movieBuilder)
         {
@@ -24,81 +23,118 @@ namespace MoviesRememberServices
             _movieBuilder = movieBuilder;
         }
 
-        public TinyMovieList GetNowShowingMoviesByRate()
+        public TinyMovieList GetNowShowingMoviesByRate(int numPage)
         {
             TinyMovieList result = new TinyMovieList();
 
-            string json = JsonUtils.GetJson(Properties.Resources.TOP_RANKED_MOVIES_NOW_SHOWING);
+            string json = JsonUtils.GetJson(Properties.Resources.TOP_RANKED_MOVIES_NOW_SHOWING + numPage);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
 
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
             {
                 movie = _movieBuilder.BuildTinyMovie(value);
-                result.TinyMovies.Add(movie);
+                result.TinyMovies.EntityList.Add(movie);
             }
+
+            SetPaging(result, glossaryEntry.feed);
 
             return result;
         }
 
-        public TinyMovieList GetNowShowingMoviesByDate()
+        public TinyMovieList GetNowShowingMoviesByDate(int numPage)
         {
             TinyMovieList result = new TinyMovieList();
 
-            string json = JsonUtils.GetJson(Properties.Resources.ORDER_BY_DATE_MOVIES_NOW_SHOWING);
+            string json = JsonUtils.GetJson(Properties.Resources.ORDER_BY_DATE_MOVIES_NOW_SHOWING + numPage);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
 
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
             {
                 movie = _movieBuilder.BuildTinyMovie(value);
-                result.TinyMovies.Add(movie);
+                result.TinyMovies.EntityList.Add(movie);
             }
-            result.TinyMovies = result.TinyMovies.OrderByDescending(x => x.ReleaseDate).ToList();
+
+            SetPaging(result, glossaryEntry.feed);
+
+            result.TinyMovies.EntityList = result.TinyMovies.EntityList.OrderByDescending(x => x.ReleaseDate).ToList();
 
             return result;
         }
 
-        public TinyMovieList GetComingSoonMoviesByRate()
+        public TinyMovieList GetComingSoonMoviesByRate(int numPage)
         {
             TinyMovieList result = new TinyMovieList();
 
-            string json = JsonUtils.GetJson(Properties.Resources.TOP_RANKED_MOVIES_COMING_SOON);
+            string json = JsonUtils.GetJson(Properties.Resources.TOP_RANKED_MOVIES_COMING_SOON + numPage);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
 
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
             {
                 movie = _movieBuilder.BuildTinyMovie(value);
-                result.TinyMovies.Add(movie);
+                result.TinyMovies.EntityList.Add(movie);
             }
+
+            SetPaging(result, glossaryEntry.feed);
 
             return result;
         }
 
-        public TinyMovieList GetComingSoonMoviesByDate()
+        public TinyMovieList GetComingSoonMoviesByDate(int numPage)
         {
             TinyMovieList result = new TinyMovieList();
 
-            string json = JsonUtils.GetJson(Properties.Resources.ORDER_BY_DATE_MOVIES_COMING_SOON);
+            string json = JsonUtils.GetJson(Properties.Resources.ORDER_BY_DATE_MOVIES_COMING_SOON + numPage);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
-
             TinyMovie movie = null;
             foreach (dynamic value in glossaryEntry.feed.movie)
             {
                 movie = _movieBuilder.BuildTinyMovie(value);
-                result.TinyMovies.Add(movie);
+                result.TinyMovies.EntityList.Add(movie);
             }
-            result.TinyMovies = result.TinyMovies.OrderBy(x => x.ReleaseDate).ToList();
+            result.TinyMovies.EntityList = result.TinyMovies.EntityList.OrderBy(x => x.ReleaseDate).ToList();
+            SetPaging(result, glossaryEntry.feed);
 
             return result;
+        }
+
+        public IList<TinyMovie> GetBestWeekMovies()
+        {
+            TinyMovieList movieListByDate = GetNowShowingMoviesByDate(1);
+            TinyMovieList movieListByRate = GetNowShowingMoviesByRate(1);
+            IList<TinyMovie> topMoviesRateList = new List<TinyMovie>();
+            IList<TinyMovie> resultMovieList = new List<TinyMovie>();
+            DateTime? maxDateTime = movieListByDate.TinyMovies.EntityList.Max(x => x.ReleaseDate);
+
+
+            for (int i = 0; i < 10; i++)
+            {
+                topMoviesRateList.Add(movieListByRate.TinyMovies.EntityList[i]);
+            }
+
+            foreach (TinyMovie movie in movieListByDate.TinyMovies.EntityList.Where(x => x.ReleaseDate == maxDateTime))
+            {
+                if (movie.PressRatings >= 3 || topMoviesRateList.Where(r => r.ApiId == movie.ApiId).SingleOrDefault() != null)
+                {
+                    resultMovieList.Add(movie);
+                }
+            }
+
+            return resultMovieList;
         }
 
         public Movie GetMovie(long code)
         {
-            string json = JsonUtils.GetJson(Properties.Resources.DISPLAY_MOVIE_URL+"&code=" + code);
+            string json = JsonUtils.GetJson(Properties.Resources.DISPLAY_MOVIE_URL + "&code=" + code);
             dynamic glossaryEntry = _jss.Deserialize(json, typeof(object)) as dynamic;
             return _movieBuilder.BuildMovie(glossaryEntry.movie);
+        }
+
+        private void SetPaging(TinyMovieList movieList, dynamic feed)
+        {
+            movieList.TinyMovies.TotalResult = (int)feed.totalResults;
         }
     }
 }

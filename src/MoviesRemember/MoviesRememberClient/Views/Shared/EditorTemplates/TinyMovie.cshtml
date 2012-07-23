@@ -21,33 +21,30 @@ else
        <h4>@Model.OriginalTitle</h4>
     }
     
-    @if (!string.IsNullOrEmpty(@Model.OriginalTitle))
+    @if (!string.IsNullOrEmpty(@Model.OriginalTitle) && @Model.OriginalTitle != @Model.Title)
     {
         <small>(@Model.OriginalTitle)</small>
     }
     
     @if (@Model.ReleaseDate.HasValue)
     {
-    <p>Sortie: @Html.DisplayFor(x => x.ReleaseDate)</p>
+    <p><b>Sortie: </b>@Html.DisplayFor(x => x.ReleaseDate)</p>
     }
 
     @if (!string.IsNullOrEmpty(@Model.Director))
     {
-         <p>De: @Model.Director</p>
+         <p><b>De: </b>@Model.Director</p>
     }
     
-    @if (!string.IsNullOrEmpty(@Model.Actors))
-    {
-         <p>De: @Model.Actors</p>
-    }
     @if (@Model.PressRatings != null)
     {
-    <p>Presse: @Model.PressRatings / 5 </p>
+    <p><b>Presse: </b>@Model.PressRatings / 5 </p>
     }
     @if (@Model.UserRatings != null)
     {
-    <p>Spectateurs: @Model.UserRatings / 5 </p>
+    <p><b>Spectateurs: </b>@Model.UserRatings / 5 </p>
     }
+    
     @if (!string.IsNullOrEmpty(@Model.Trailer))
     {
     <a href="@Model.Trailer">Bande annonce</a>

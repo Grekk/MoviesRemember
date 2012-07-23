@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="Link.cs" />
     <Compile Include="Movie.cs" />
+    <Compile Include="PagedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TinyMovie.cs" />
     <Compile Include="TinyMovieList.cs" />
+    <Compile Include="UserAction.cs" />
     <Compile Include="UserMovie.cs" />
   </ItemGroup>
   <ItemGroup>

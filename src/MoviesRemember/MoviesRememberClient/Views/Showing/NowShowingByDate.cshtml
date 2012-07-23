@@ -2,10 +2,59 @@
 @{
     ViewBag.Title = "NowShowingByDate";
 }
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.pagination').paging(@Model.TinyMovies.TotalResult, { // make 1337 elements navigatable
+            format: '[< ncnnn! >]', // define how the navigation should look like
+            perpage: @Model.TinyMovies.Count, // show 10 elements per page
+            lapping: 0, // don't overlap pages for the moment
+            page: @Model.TinyMovies.CurrentPage, // start at page, can also be "null" or negative
+            onSelect: function (page) {
+                if(page != @Model.TinyMovies.CurrentPage)
+                {
+                    // add code which gets executed when user selects a page, how about $.ajax() or $(...).slice()?
+                    var href = $(location).attr('href');
+                    var prevSearch = $(location).attr('search');
+                    var newSearch = '?page=' + page;
+                    if(prevSearch != "") {
+                        href = href.replace(prevSearch, newSearch);
+                    }
+                    else {
+                        href = href + newSearch;
+                    }
+                    window.location.href = href;
+                }
+            },
+            onFormat: function (type) {
+                switch (type) {
+                    case 'block': // n and c
+                        if(this.value != @Model.TinyMovies.CurrentPage)
+                        {
+                            return '<a href="#">' + this.value + '</a>';
+                        }
+                        
+                        return '<span class="current">' + this.value + '</span>';
+                case 'next': // >
+                        return '<a href="#">&gt;</a>';
+                    case 'prev': // <
+                        return '<a href="#">&lt;</a>';
+                    case 'first': // [
+                        return '<a href="#">first</a>';
+                    case 'last': // ]
+                        return '<a href="#">last</a>';
+                }
+            }
+        });
+    });
+</script>
 <h2>
     A venir
 </h2>
-<a href="@Url.Action("NowShowing", "Showing")">Par note</a> @*@for (int c = 0; c < Model.NbWeek; c++)
+<a href="@Url.Action("NowShowing", "Showing")">Par note</a>
+<div class="pagination">
+</div>
+ @*@for (int c = 0; c < Model.NbWeek; c++)
+
 {
     Model.CurrentWeek = c;
     
@@ -17,5 +66,5 @@
         </section>
 }*@
 <section class="features">
-            @Html.EditorFor(x => x.TinyMovies)
+            @Html.EditorFor(x => x.TinyMovies.EntityList)
         </section>

@@ -1,0 +1,26 @@
+﻿@using Action = MoviesRememberDomain.Action
+@model MoviesRememberDomain.UserAction
+@{
+    ViewBag.Title = "UserAction";
+}
+<fieldset id="fldstUserAction">
+    <legend>
+        <label>
+            @Model.UserName
+            @if (Model.Action == Action.ADD_MOVIE)
+            {
+                @: ajoute
+                                    }
+            @if (Model.Action == Action.DELETE_MOVIE)
+            {
+                @: retire
+                                    }
+            @if (Model.Action == Action.SHOW_MOVIE)
+            {
+                @: consulte
+                                    }
+        </label>
+    </legend>
+    <p>@Html.ActionLink(Model.MovieName, "DisplayMovie", "Showing", new { code = Model.MovieId }, null)
+    </p>
+</fieldset>

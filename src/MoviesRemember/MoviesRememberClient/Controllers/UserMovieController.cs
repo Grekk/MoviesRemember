@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 using MoviesRememberServices.Interface;
 using System.Web.Security;
 using MoviesRememberDomain;
+using MoviesRememberServices.Utils;
 
 namespace MoviesRememberClient.Controllers
 {
@@ -26,17 +28,18 @@ namespace MoviesRememberClient.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        public ActionResult DeleteUserMovie(UserMovie userMovie)
+        {
+            _userService.DeleteMovie(User.Identity.Name, userMovie);
+            return RedirectToAction("MyList");
+        }
+
+        [Authorize]
+        [HttpPost]
         public ActionResult UpdateUserMovie(UserMovie userMovie)
         {
-            if (userMovie.ShouldDelete)
-            {
-                _userService.DeleteMovie(userMovie.Id);
-            }
-            else
-            {
-                _userService.UpdateMovie(userMovie);
-            }
-
+            _userService.UpdateMovie(userMovie);
             return RedirectToAction("MyList");
         }
     }

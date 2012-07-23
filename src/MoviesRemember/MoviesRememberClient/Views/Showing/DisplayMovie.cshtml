@@ -10,7 +10,10 @@
     @Html.HiddenFor(x => x.ReleaseDate);
     <section>
 <h2>@Model.Title</h2>
+@if (!string.IsNullOrEmpty(@Model.OriginalTitle))
+{
 <small>(@Model.OriginalTitle)</small>
+}
 <table>
     <tr>
         <td>

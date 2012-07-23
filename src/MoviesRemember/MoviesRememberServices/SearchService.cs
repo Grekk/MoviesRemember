@@ -36,7 +36,7 @@ namespace MoviesRememberServices
                 foreach (dynamic value in glossaryEntry.feed.movie)
                 {
                     movie = _movieBuilder.BuildTinyMovie(value);
-                    result.TinyMovies.Add(movie);
+                    result.TinyMovies.EntityList.Add(movie);
                 }
             }
             catch

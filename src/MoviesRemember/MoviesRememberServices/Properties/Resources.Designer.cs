@@ -79,7 +79,7 @@ namespace MoviesRememberServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=dateasc&amp;format=json.
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=24&amp;filter=comingsoon&amp;order=dateasc&amp;format=json&amp;page=.
         /// </summary>
         internal static string ORDER_BY_DATE_MOVIES_COMING_SOON {
             get {
@@ -88,7 +88,7 @@ namespace MoviesRememberServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=nowshowing&amp;page=1&amp;order=datedesc&amp;format=json.
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=24&amp;filter=nowshowing&amp;&amp;order=datedesc&amp;format=json&amp;page=.
         /// </summary>
         internal static string ORDER_BY_DATE_MOVIES_NOW_SHOWING {
             get {
@@ -106,7 +106,7 @@ namespace MoviesRememberServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=comingsoon&amp;page=1&amp;order=toprank&amp;format=json.
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=24&amp;filter=comingsoon&amp;order=toprank&amp;format=json&amp;page=.
         /// </summary>
         internal static string TOP_RANKED_MOVIES_COMING_SOON {
             get {
@@ -115,7 +115,7 @@ namespace MoviesRememberServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=25&amp;filter=nowshowing&amp;page=1&amp;order=toprank&amp;format=json.
+        ///   Looks up a localized string similar to http://api.allocine.fr/rest/v3/movielist?partner=YW5kcm9pZC12M3M&amp;count=24&amp;filter=nowshowing&amp;order=toprank&amp;format=json&amp;page=.
         /// </summary>
         internal static string TOP_RANKED_MOVIES_NOW_SHOWING {
             get {

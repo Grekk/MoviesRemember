@@ -16,19 +16,63 @@ namespace MoviesRememberDomain
 
         public string Title { get; set; }
 
-        public string OriginalTitle { get; set; }
+        private string _originalTitle = string.Empty;
+        public string OriginalTitle
+        {
+            get
+            {
+                return  string.IsNullOrEmpty(Title) || _originalTitle.ToLowerInvariant() != Title.ToLowerInvariant() ? _originalTitle : string.Empty;
+            }
+            set
+            {
+                _originalTitle = value;
+            }
+        }
 
         public string Actors { get; set; }
 
         public string Director { get; set; }
 
-        public decimal? UserRatings { get; set; }
+        private decimal? _userRatings;
+        public decimal? UserRatings
+        {
+            get
+            {
+                return _userRatings;
+            }
+            set
+            {
+                if(value != null)
+                {
+                    value = decimal.Round(value.Value, 2);
+                }
 
-        public decimal? PressRatings { get; set; }
+                _userRatings = value;
+            }
+        }
+
+        private decimal? _pressRatings;
+        public decimal? PressRatings
+        {
+            get
+            {
+                return _pressRatings;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    value = decimal.Round(value.Value, 2);
+                }
+
+                _pressRatings = value;
+            }
+        }
 
         public string Trailer { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? ReleaseDate { get; set; }
     }
 }

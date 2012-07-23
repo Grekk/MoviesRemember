@@ -11,8 +11,8 @@ namespace MoviesRememberClient.Controllers
 {
     public class ShowingController : Controller
     {
-        private IMoviesShowingService _moviesShowingService;
-        private IUserService _userService;
+        private readonly IMoviesShowingService _moviesShowingService;
+        private readonly IUserService _userService;
 
         public ShowingController(IMoviesShowingService moviesShowingService, IUserService userService)
         {
@@ -23,32 +23,36 @@ namespace MoviesRememberClient.Controllers
         //
         // GET: /Showing/
         [Authorize]
-        public ActionResult NowShowing()
+        public ActionResult NowShowing(int page = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByRate();
+            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByRate(page);
+            result.TinyMovies.CurrentPage = page;
             return View(result);
         }
 
         //
         // GET: /Showing/
         [Authorize]
-        public ActionResult NowShowingByDate()
+        public ActionResult NowShowingByDate(int page = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByDate();
+            TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByDate(page);
+            result.TinyMovies.CurrentPage = page;
             return View(result);
         }
 
         [Authorize]
-        public ActionResult ComingSoon()
+        public ActionResult ComingSoon(int page = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate();
+            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByRate(page);
+            result.TinyMovies.CurrentPage = page;
             return View(result);
         }
 
         [Authorize]
-        public ActionResult ComingSoonByDate()
+        public ActionResult ComingSoonByDate(int page = 1)
         {
-            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByDate();
+            TinyMovieList result = _moviesShowingService.GetComingSoonMoviesByDate(page);
+            result.TinyMovies.CurrentPage = page;
             return View(result);
         }
 
@@ -63,8 +67,14 @@ namespace MoviesRememberClient.Controllers
         [Authorize]
         public ActionResult AddMovie(Movie movie)
         {
-            _userService.AddMovie((Guid)Membership.GetUser().ProviderUserKey, movie);
+            _userService.AddMovie((Guid)Membership.GetUser().ProviderUserKey,User.Identity.Name, movie);
             return RedirectToAction("DisplayMovie", new { code = movie.ApiId });
+        }
+
+        public ActionResult UsersActions()
+        {
+            IList<UserAction> userActions = _userService.GetUsersActions().Where(x => x.UserName != User.Identity.Name).ToList();
+            return View("_UsersActions", userActions);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using MoviesRememberClient.Models;
+using MoviesRememberServices.Interface;
 
 namespace MoviesRememberClient.Controllers
 {
@@ -12,6 +13,13 @@ namespace MoviesRememberClient.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly IUserService _userService;
+
+        public AccountController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         //
         // GET: /Account/Login
 
@@ -61,15 +69,11 @@ namespace MoviesRememberClient.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+
+                    return RedirectToAction("MyList", "UserMovie");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                }
+
+                ModelState.AddModelError("", "The user name or password provided is incorrect.");
             }
 
             // If we got this far, something failed, redisplay form
@@ -83,7 +87,7 @@ namespace MoviesRememberClient.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
@@ -111,6 +115,7 @@ namespace MoviesRememberClient.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, createPersistentCookie: false);
+                    _userService.AddNewMember(model.Email);
                     return Json(new { success = true });
                 }
                 else
@@ -139,7 +144,8 @@ namespace MoviesRememberClient.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, createPersistentCookie: false);
-                    return RedirectToAction("Index", "Home");
+                    _userService.AddNewMember(model.Email);
+                    return RedirectToAction("MyList", "UserMovie");
                 }
                 else
                 {
