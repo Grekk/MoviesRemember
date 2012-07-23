@@ -10,6 +10,7 @@ using System.Web.Routing;
 using MoviesRememberClient.Registry;
 using StructureMap;
 using MoviesRememberServices.Utils;
+using System.Configuration;
 
 namespace MoviesRememberClient
 {
@@ -27,11 +28,11 @@ namespace MoviesRememberClient
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "Default",
