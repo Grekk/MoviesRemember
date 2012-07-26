@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace MoviesRememberDomain
@@ -12,8 +13,10 @@ namespace MoviesRememberDomain
             LinkList = new List<Link>();
         }
 
+        [DataMember]
         public IList<Link> LinkList { get; set; }
 
+        [DataMember]
         public string Synopsis { get; set; }
     }
 }

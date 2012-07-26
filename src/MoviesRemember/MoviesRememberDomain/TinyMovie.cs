@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,15 +9,21 @@ namespace MoviesRememberDomain
 {
     public class TinyMovie
     {
+        [DataMember]
         public long Id { get; set; }
 
+        [DataMember]
         public long ApiId { get; set; }
-     
+
+        [DataMember]
         public string PictureUrl { get; set; }
 
+        [DataMember]
         public string Title { get; set; }
 
         private string _originalTitle = string.Empty;
+
+        [DataMember]
         public string OriginalTitle
         {
             get
@@ -29,11 +36,14 @@ namespace MoviesRememberDomain
             }
         }
 
+        [DataMember]
         public string Actors { get; set; }
 
+        [DataMember]
         public string Director { get; set; }
 
         private decimal? _userRatings;
+        [DataMember]
         public decimal? UserRatings
         {
             get
@@ -52,6 +62,7 @@ namespace MoviesRememberDomain
         }
 
         private decimal? _pressRatings;
+        [DataMember]
         public decimal? PressRatings
         {
             get
@@ -69,10 +80,12 @@ namespace MoviesRememberDomain
             }
         }
 
+        [DataMember]
         public string Trailer { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DataMember]
         public DateTime? ReleaseDate { get; set; }
     }
 }

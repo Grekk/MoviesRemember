@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace MoviesRememberDomain
@@ -12,8 +13,10 @@ namespace MoviesRememberDomain
             TinyMovies = new PagedList<TinyMovie>();
         }
 
+        [DataMember]
         public PagedList<TinyMovie> TinyMovies { get; set; }
 
+        [DataMember]
         public double NbWeek
         {
             get
@@ -22,8 +25,10 @@ namespace MoviesRememberDomain
             }
         }
 
+        [DataMember]
         public int CurrentWeek { get; set; }
 
+        [DataMember]
         public List<TinyMovie> GetMovieByWeek
         {
             get

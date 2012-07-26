@@ -18,6 +18,8 @@ namespace MoviesRememberServices.Utils
 {
     public class Bootstrapper
     {
+        private bool _isInitialized;
+
         private void RegisterDependencies()
         {
             string host = ConfigurationManager.AppSettings["REDISTOGO_URL"];
@@ -105,34 +107,12 @@ namespace MoviesRememberServices.Utils
 
         public void Bootstrap()
         {
-            RegisterDependencies();
-            InitializeMapper();
-            //InitializeJobScheduler();
-        }
-
-        public void InitializeJobScheduler()
-        {
-            //new LogEvent("InitializeJobScheduler").Raise();
-
-            // construct a scheduler factory
-            ISchedulerFactory schedFact = new StdSchedulerFactory();
-
-            // get a scheduler
-            IScheduler sched = schedFact.GetScheduler();
-            sched.Start();
-
-            IJobDetail job = JobBuilder.Create<AlertMovieJob>()
-             .WithIdentity("job1", "group1")
-             .Build();
-
-            ITrigger trigger = TriggerBuilder.Create()
-            .WithIdentity("trigger1", "group1")
-            .WithCronSchedule("0 37 11 ? * *")
-            .Build();
-
-            sched.ScheduleJob(job, trigger);
-
-            //new LogEvent("End InitializeJobScheduler").Raise();
+            if (_isInitialized)
+            {
+                _isInitialized = true;
+                RegisterDependencies();
+                InitializeMapper();
+            }
         }
     }
 }
