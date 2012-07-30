@@ -21,7 +21,6 @@ namespace MoviesRememberClient.Controllers
         public AccountController(IUserService userService)
         {
             _userService = userService;
-            new LogEvent(ConfigurationManager.ConnectionStrings["MoviesRememberDB"].ConnectionString).Raise();
         }
 
         //
@@ -30,6 +29,7 @@ namespace MoviesRememberClient.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
+            new LogEvent(ConfigurationManager.ConnectionStrings["MoviesRememberDB"].ConnectionString).Raise();
             return ContextDependentView();
         }
 
