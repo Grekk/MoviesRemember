@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using MoviesRememberClient.Models;
 using MoviesRememberClient.UserService;
+using MoviesRememberClient.Utils;
+
 
 namespace MoviesRememberClient.Controllers
 {
@@ -18,6 +21,7 @@ namespace MoviesRememberClient.Controllers
         public AccountController(IUserService userService)
         {
             _userService = userService;
+            new LogEvent(ConfigurationManager.ConnectionStrings["MoviesRememberDB"].ConnectionString).Raise();
         }
 
         //
