@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MoviesRememberDomain;
+using MoviesRememberClient.UserService;
 
 namespace MoviesRememberClient.Models
 {

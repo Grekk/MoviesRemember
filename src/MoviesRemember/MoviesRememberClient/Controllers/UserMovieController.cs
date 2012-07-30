@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MoviesRememberServices.Interface;
+using MoviesRememberClient.UserService;
 using System.Web.Security;
-using MoviesRememberDomain;
-using MoviesRememberServices.Utils;
 
 namespace MoviesRememberClient.Controllers
 {

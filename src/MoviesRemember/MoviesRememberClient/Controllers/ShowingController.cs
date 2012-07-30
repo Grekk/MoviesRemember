@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using MoviesRememberServices.Interface;
-using MoviesRememberDomain;
 using System.Web.Security;
+using MoviesRememberClient.MoviesShowingService;
+using MoviesRememberClient.UserService;
+using Movie = MoviesRememberClient.MoviesShowingService.Movie;
 
 namespace MoviesRememberClient.Controllers
 {
@@ -65,9 +65,9 @@ namespace MoviesRememberClient.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult AddMovie(Movie movie)
+        public ActionResult AddMovie(UserService.Movie movie)
         {
-            _userService.AddMovie((Guid)Membership.GetUser().ProviderUserKey,User.Identity.Name, movie);
+            _userService.AddMovie((Guid)Membership.GetUser().ProviderUserKey,User.Identity.Name,movie);
             return RedirectToAction("DisplayMovie", new { code = movie.ApiId });
         }
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" />
+  <xs:element name="GetNowShowingMoviesByRate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numPage" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNowShowingMoviesByRateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetNowShowingMoviesByRateResult" nillable="true" type="q1:TinyMovieList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNowShowingMoviesByDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numPage" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNowShowingMoviesByDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetNowShowingMoviesByDateResult" nillable="true" type="q2:TinyMovieList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetComingSoonMoviesByRate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numPage" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetComingSoonMoviesByRateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetComingSoonMoviesByRateResult" nillable="true" type="q3:TinyMovieList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetComingSoonMoviesByDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="numPage" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetComingSoonMoviesByDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetComingSoonMoviesByDateResult" nillable="true" type="q4:TinyMovieList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBestWeekMovies">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBestWeekMoviesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetBestWeekMoviesResult" nillable="true" type="q5:ArrayOfTinyMovie" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMovie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMovieResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetMovieResult" nillable="true" type="q6:Movie" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

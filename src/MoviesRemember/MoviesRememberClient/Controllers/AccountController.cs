@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using MoviesRememberClient.Models;
-using MoviesRememberServices.Interface;
+using MoviesRememberClient.UserService;
 
 namespace MoviesRememberClient.Controllers
 {

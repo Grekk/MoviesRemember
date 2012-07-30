@@ -1,11 +1,11 @@
-﻿@model IList<MoviesRememberDomain.UserMovie>
+﻿@model IList<MoviesRememberClient.UserService.UserMovie>
 @{
     ViewBag.Title = "UserMovie";
 }
 <h2>
     Mes films
 </h2>
-@foreach (MoviesRememberDomain.UserMovie userMovie in Model)
+@foreach (MoviesRememberClient.UserService.UserMovie userMovie in Model)
 { 
 <section class="features">
 @Html.EditorFor(x => userMovie)

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MoviesShowingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMoviesShowingService_GetNowShowingMoviesByRate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNowShowingMoviesByRate" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetNowShowingMoviesByRate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNowShowingMoviesByRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetNowShowingMoviesByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNowShowingMoviesByDate" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetNowShowingMoviesByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNowShowingMoviesByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetComingSoonMoviesByRate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComingSoonMoviesByRate" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetComingSoonMoviesByRate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComingSoonMoviesByRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetComingSoonMoviesByDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComingSoonMoviesByDate" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetComingSoonMoviesByDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComingSoonMoviesByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetBestWeekMovies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBestWeekMovies" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetBestWeekMovies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBestWeekMoviesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetMovie_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMovie" />
+  </wsdl:message>
+  <wsdl:message name="IMoviesShowingService_GetMovie_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMovieResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMoviesShowingService">
+    <wsdl:operation name="GetNowShowingMoviesByRate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMoviesShowingService/GetNowShowingMoviesByRate" message="tns:IMoviesShowingService_GetNowShowingMoviesByRate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMoviesShowingService/GetNowShowingMoviesByRateResponse" message="tns:IMoviesShowingService_GetNowShowingMoviesByRate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNowShowingMoviesByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMoviesShowingService/GetNowShowingMoviesByDate" message="tns:IMoviesShowingService_GetNowShowingMoviesByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMoviesShowingService/GetNowShowingMoviesByDateResponse" message="tns:IMoviesShowingService_GetNowShowingMoviesByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComingSoonMoviesByRate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMoviesShowingService/GetComingSoonMoviesByRate" message="tns:IMoviesShowingService_GetComingSoonMoviesByRate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMoviesShowingService/GetComingSoonMoviesByRateResponse" message="tns:IMoviesShowingService_GetComingSoonMoviesByRate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComingSoonMoviesByDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMoviesShowingService/GetComingSoonMoviesByDate" message="tns:IMoviesShowingService_GetComingSoonMoviesByDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMoviesShowingService/GetComingSoonMoviesByDateResponse" message="tns:IMoviesShowingService_GetComingSoonMoviesByDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBestWeekMovies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMoviesShowingService/GetBestWeekMovies" message="tns:IMoviesShowingService_GetBestWeekMovies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMoviesShowingService/GetBestWeekMoviesResponse" message="tns:IMoviesShowingService_GetBestWeekMovies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMovie">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMoviesShowingService/GetMovie" message="tns:IMoviesShowingService_GetMovie_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMoviesShowingService/GetMovieResponse" message="tns:IMoviesShowingService_GetMovie_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMoviesShowingService" type="tns:IMoviesShowingService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetNowShowingMoviesByRate">
+      <soap:operation soapAction="http://tempuri.org/IMoviesShowingService/GetNowShowingMoviesByRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNowShowingMoviesByDate">
+      <soap:operation soapAction="http://tempuri.org/IMoviesShowingService/GetNowShowingMoviesByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComingSoonMoviesByRate">
+      <soap:operation soapAction="http://tempuri.org/IMoviesShowingService/GetComingSoonMoviesByRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComingSoonMoviesByDate">
+      <soap:operation soapAction="http://tempuri.org/IMoviesShowingService/GetComingSoonMoviesByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBestWeekMovies">
+      <soap:operation soapAction="http://tempuri.org/IMoviesShowingService/GetBestWeekMovies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovie">
+      <soap:operation soapAction="http://tempuri.org/IMoviesShowingService/GetMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MoviesShowingService">
+    <wsdl:port name="BasicHttpBinding_IMoviesShowingService" binding="tns:BasicHttpBinding_IMoviesShowingService">
+      <soap:address location="http://movieapi.apphb.com/MoviesShowingService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

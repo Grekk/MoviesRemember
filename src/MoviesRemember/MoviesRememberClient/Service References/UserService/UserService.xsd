@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://movieapi.apphb.com/UserService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Movie">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TinyMovie">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LinkList" nillable="true" type="tns:ArrayOfLink" />
+          <xs:element minOccurs="0" name="Synopsis" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Movie" nillable="true" type="tns:Movie" />
+  <xs:complexType name="TinyMovie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Actors" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApiId" type="xs:long" />
+      <xs:element minOccurs="0" name="Director" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="OriginalTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PictureUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PressRatings" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReleaseDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Trailer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserRatings" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TinyMovie" nillable="true" type="tns:TinyMovie" />
+  <xs:complexType name="ArrayOfLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Link" nillable="true" type="tns:Link" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLink" nillable="true" type="tns:ArrayOfLink" />
+  <xs:complexType name="Link">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Href" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Link" nillable="true" type="tns:Link" />
+  <xs:complexType name="UserMovie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApiId" type="xs:long" />
+      <xs:element minOccurs="0" name="Id" type="xs:long" />
+      <xs:element minOccurs="0" name="PictureUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReleaseDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShouldDelete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserMovie" nillable="true" type="tns:UserMovie" />
+  <xs:complexType name="ArrayOfUserMovie">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserMovie" nillable="true" type="tns:UserMovie" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserMovie" nillable="true" type="tns:ArrayOfUserMovie" />
+  <xs:complexType name="UserAction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Action" type="tns:Action" />
+      <xs:element minOccurs="0" name="MovieId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MovieName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAction" nillable="true" type="tns:UserAction" />
+  <xs:simpleType name="Action">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADD_MOVIE" />
+      <xs:enumeration value="DELETE_MOVIE" />
+      <xs:enumeration value="SHOW_MOVIE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Action" nillable="true" type="tns:Action" />
+  <xs:complexType name="ArrayOfUserAction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserAction" nillable="true" type="tns:UserAction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserAction" nillable="true" type="tns:ArrayOfUserAction" />
+</xs:schema>

@@ -9,7 +9,6 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using MoviesRememberClient.Registry;
 using StructureMap;
-using MoviesRememberServices.Utils;
 using System.Configuration;
 
 namespace MoviesRememberClient
@@ -62,7 +61,7 @@ namespace MoviesRememberClient
 
         private void InitializeContainer()
         {
-            new Bootstrapper().Bootstrap();
+            Bootstrapper.Bootstrap();
             StructureMapDependencyResolver structureMapDependencyResolver = new StructureMapDependencyResolver();
             DependencyResolver.SetResolver(structureMapDependencyResolver);
         }
