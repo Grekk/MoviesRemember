@@ -30,12 +30,16 @@
     @using (Html.BeginForm("UpdateUserMovie", "UserMovie"))
     {
     <p>
-    @Html.LabelFor(x => x.ReleaseDate)
+    Date de sortie:
     @Html.DisplayFor(x => x.ReleaseDate)
     </p>
     <p>
     @Html.LabelFor(x => x.Rate)
     @Html.TextBoxFor(x => x.Rate)
+    </p>
+        <p>
+    @Html.LabelFor(x => x.AlreadySeen)
+    @Html.TextBoxFor(x => x.AlreadySeen)
     </p>
     @Html.HiddenFor(x => x.ApiId)
     @Html.HiddenFor(x => x.Id)

@@ -329,6 +329,9 @@ namespace MoviesRememberClient.UserService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool AlreadySeenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long ApiIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -359,6 +362,19 @@ namespace MoviesRememberClient.UserService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool AlreadySeen {
+            get {
+                return this.AlreadySeenField;
+            }
+            set {
+                if ((this.AlreadySeenField.Equals(value) != true)) {
+                    this.AlreadySeenField = value;
+                    this.RaisePropertyChanged("AlreadySeen");
+                }
             }
         }
         

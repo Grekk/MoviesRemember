@@ -28,7 +28,7 @@ else
     
     @if (@Model.ReleaseDate.HasValue)
     {
-    <p><b>Sortie: </b>@Html.DisplayFor((x => x.ReleaseDate),String.Format("{0:d}"))</p>
+    <p><b>Sortie: </b>@Html.DisplayFor((x => x.ReleaseDate),String.Format("dd/MM/yyyy"))</p>
     }
 
     @if (!string.IsNullOrEmpty(@Model.Director))

@@ -43,6 +43,7 @@
   <xs:element name="Link" nillable="true" type="tns:Link" />
   <xs:complexType name="UserMovie">
     <xs:sequence>
+      <xs:element minOccurs="0" name="AlreadySeen" type="xs:boolean" />
       <xs:element minOccurs="0" name="ApiId" type="xs:long" />
       <xs:element minOccurs="0" name="Id" type="xs:long" />
       <xs:element minOccurs="0" name="PictureUrl" nillable="true" type="xs:string" />
