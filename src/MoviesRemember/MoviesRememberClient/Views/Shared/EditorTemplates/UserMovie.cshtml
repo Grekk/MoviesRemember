@@ -2,6 +2,20 @@
 @{
     ViewBag.Title = "UserMovie";
 }
+<script>
+    $(function () {
+        $("#slider-range-min").slider({
+            range: "min",
+            value: @Model.Rate,
+            min: 0,
+            max: 5,
+            slide: function (event, ui) {
+                $("#Rate").val("$" + ui.value);
+            }
+        });
+        $("#Rate").val("$" + $("#slider-range-min").slider("value"));
+    });
+	</script>
 <section class="feature">
 <div>
 <table>
@@ -31,11 +45,11 @@
     {
     <p>
     <b>Date de sortie: </b>
-    @Html.DisplayFor(x => x.ReleaseDate)
+    @Html.DisplayFor(x => x.ReleaseDate, string.Format("dd/MM/yyyy"))
     </p>
     <p>
-    @Html.LabelFor(x => x.Rate)
-    @Html.TextBoxFor(x => x.Rate)
+    <b>Note: </b> @Html.EditorFor(model => model.Rate)
+    <div id="slider-range-min"></div>
     </p>
         <p>
     <b>Déjà vu: </b>
