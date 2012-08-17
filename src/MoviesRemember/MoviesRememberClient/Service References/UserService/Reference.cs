@@ -338,7 +338,7 @@ namespace MoviesRememberClient.UserService {
         private string PictureUrlField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> RateField;
+        private System.Nullable<double> RateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReleaseDateField;
@@ -402,7 +402,7 @@ namespace MoviesRememberClient.UserService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Rate {
+        public System.Nullable<double> Rate {
             get {
                 return this.RateField;
             }

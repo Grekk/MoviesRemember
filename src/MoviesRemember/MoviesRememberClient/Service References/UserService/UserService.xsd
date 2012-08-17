@@ -46,7 +46,7 @@
       <xs:element minOccurs="0" name="ApiId" type="xs:long" />
       <xs:element minOccurs="0" name="Id" type="xs:long" />
       <xs:element minOccurs="0" name="PictureUrl" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Rate" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="ReleaseDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ShouldDelete" type="xs:boolean" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />

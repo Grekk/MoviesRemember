@@ -3,19 +3,13 @@
     ViewBag.Title = "UserMovie";
 }
 <script>
-    $(function () {
-        $("#slider-range-min").slider({
-            range: "min",
-            value: @Model.Rate,
-            min: 0,
-            max: 5,
-            slide: function (event, ui) {
-                $("#Rate").val("$" + ui.value);
-            }
+    $(document).ready(function () {
+        var tbRateId = "input[id=tbRate" + @Model.Id + "]";
+        
+        $(tbRateId).change(function() {
         });
-        $("#Rate").val("$" + $("#slider-range-min").slider("value"));
     });
-	</script>
+</script>
 <section class="feature">
 <div>
 <table>
@@ -48,8 +42,8 @@
     @Html.DisplayFor(x => x.ReleaseDate, string.Format("dd/MM/yyyy"))
     </p>
     <p>
-    <b>Note: </b> @Html.EditorFor(model => model.Rate)
-    <div id="slider-range-min"></div>
+    <b>Note: </b> 
+        @Html.TextBoxFor(x => x.Rate, new { Id = "tbRate" + Model.Id })
     </p>
     @Html.HiddenFor(x => x.ApiId)
     @Html.HiddenFor(x => x.Id)
