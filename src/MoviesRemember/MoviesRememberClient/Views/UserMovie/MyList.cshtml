@@ -1,11 +1,58 @@
-﻿@model IList<MoviesRememberClient.UserService.UserMovie>
+﻿@model MoviesRememberClient.UserService.TinyUserMovieList
 @{
     ViewBag.Title = "UserMovie";
 }
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.pagination').paging(@Model.TinyUserMovies.TotalResult, { // make 1337 elements navigatable
+            format: '[< ncnnn! >]', // define how the navigation should look like
+            perpage: @Model.TinyUserMovies.Count, // show 10 elements per page
+            lapping: 0, // don't overlap pages for the moment
+            page: @Model.TinyUserMovies.CurrentPage, // start at page, can also be "null" or negative
+            onSelect: function (page) {
+                if(page != @Model.TinyUserMovies.CurrentPage)
+                {
+                    // add code which gets executed when user selects a page, how about $.ajax() or $(...).slice()?
+                    var href = $(location).attr('href');
+                    var prevSearch = $(location).attr('search');
+                    var newSearch = '?page=' + page;
+                    if(prevSearch != "") {
+                        href = href.replace(prevSearch, newSearch);
+                    }
+                    else {
+                        href = href + newSearch;
+                    }
+                    window.location.href = href;
+                }
+            },
+            onFormat: function (type) {
+                switch (type) {
+                    case 'block': // n and c
+                        if(this.value != @Model.TinyUserMovies.CurrentPage)
+                        {
+                            return '<a href="#">' + this.value + '</a>';
+                        }
+                        
+                        return '<span class="current">' + this.value + '</span>';
+                case 'next': // >
+                        return '<a href="#">&gt;</a>';
+                    case 'prev': // <
+                        return '<a href="#">&lt;</a>';
+                    case 'first': // [
+                        return '<a href="#">first</a>';
+                    case 'last': // ]
+                        return '<a href="#">last</a>';
+                }
+            }
+        });
+    });
+</script>
 <h2>
     Mes films
 </h2>
-@foreach (MoviesRememberClient.UserService.UserMovie userMovie in Model)
+<div class="pagination">
+</div>
+@foreach (MoviesRememberClient.UserService.UserMovie userMovie in Model.TinyUserMovies.EntityList)
 { 
 <section class="features">
 @Html.EditorFor(x => userMovie)

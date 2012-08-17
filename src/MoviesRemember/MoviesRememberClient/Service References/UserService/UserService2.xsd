@@ -45,13 +45,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="userId" type="q5:guid" />
+        <xs:element minOccurs="0" name="numPage" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUserMovieListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetUserMovieListResult" nillable="true" type="q6:ArrayOfUserMovie" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetUserMovieListResult" nillable="true" type="q6:TinyUserMovieList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

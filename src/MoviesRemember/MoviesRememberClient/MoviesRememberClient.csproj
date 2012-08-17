@@ -260,10 +260,10 @@
     <None Include="Service References\SearchService\SearchService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserService\MoviesRememberClient.UserService.UserAction.datasource">
+    <None Include="Service References\UserService\MoviesRememberClient.UserService.TinyUserMovieList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\UserService\MoviesRememberClient.UserService.UserMovie.datasource">
+    <None Include="Service References\UserService\MoviesRememberClient.UserService.UserAction.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserService\configuration91.svcinfo" />

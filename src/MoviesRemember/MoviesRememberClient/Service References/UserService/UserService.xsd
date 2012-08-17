@@ -43,7 +43,6 @@
   <xs:element name="Link" nillable="true" type="tns:Link" />
   <xs:complexType name="UserMovie">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AlreadySeen" type="xs:boolean" />
       <xs:element minOccurs="0" name="ApiId" type="xs:long" />
       <xs:element minOccurs="0" name="Id" type="xs:long" />
       <xs:element minOccurs="0" name="PictureUrl" nillable="true" type="xs:string" />
@@ -55,6 +54,29 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserMovie" nillable="true" type="tns:UserMovie" />
+  <xs:complexType name="TinyUserMovieList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TinyUserMovies" nillable="true" type="tns:PagedListOfUserMoviel_P5pM7zr" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TinyUserMovieList" nillable="true" type="tns:TinyUserMovieList" />
+  <xs:complexType name="PagedListOfUserMoviel_P5pM7zr">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="PagedListOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserMovie" Namespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="CurrentPage" type="xs:int" />
+      <xs:element minOccurs="0" name="EntityList" nillable="true" type="tns:ArrayOfUserMovie" />
+      <xs:element minOccurs="0" name="TotalPage" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalResult" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PagedListOfUserMoviel_P5pM7zr" nillable="true" type="tns:PagedListOfUserMoviel_P5pM7zr" />
   <xs:complexType name="ArrayOfUserMovie">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="UserMovie" nillable="true" type="tns:UserMovie" />

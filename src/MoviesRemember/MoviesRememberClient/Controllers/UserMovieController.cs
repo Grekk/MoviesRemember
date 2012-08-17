@@ -19,9 +19,9 @@ namespace MoviesRememberClient.Controllers
         }
 
         [Authorize]
-        public ActionResult MyList()
+        public ActionResult MyList(int page = 1)
         {
-            IList<UserMovie> model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey);
+            TinyUserMovieList model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey, page);
             return View(model);
         }
 

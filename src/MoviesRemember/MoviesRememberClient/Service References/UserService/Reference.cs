@@ -329,9 +329,6 @@ namespace MoviesRememberClient.UserService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool AlreadySeenField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private long ApiIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -362,19 +359,6 @@ namespace MoviesRememberClient.UserService {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool AlreadySeen {
-            get {
-                return this.AlreadySeenField;
-            }
-            set {
-                if ((this.AlreadySeenField.Equals(value) != true)) {
-                    this.AlreadySeenField = value;
-                    this.RaisePropertyChanged("AlreadySeen");
-                }
             }
         }
         
@@ -478,6 +462,160 @@ namespace MoviesRememberClient.UserService {
                 if ((this.UserIdField.Equals(value) != true)) {
                     this.UserIdField = value;
                     this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TinyUserMovieList", Namespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain")]
+    [System.SerializableAttribute()]
+    public partial class TinyUserMovieList : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MoviesRememberClient.UserService.PagedListOfUserMoviel_P5pM7zr TinyUserMoviesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MoviesRememberClient.UserService.PagedListOfUserMoviel_P5pM7zr TinyUserMovies {
+            get {
+                return this.TinyUserMoviesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TinyUserMoviesField, value) != true)) {
+                    this.TinyUserMoviesField = value;
+                    this.RaisePropertyChanged("TinyUserMovies");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PagedListOfUserMoviel_P5pM7zr", Namespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain")]
+    [System.SerializableAttribute()]
+    public partial class PagedListOfUserMoviel_P5pM7zr : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CurrentPageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<MoviesRememberClient.UserService.UserMovie> EntityListField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalPageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalResultField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Count {
+            get {
+                return this.CountField;
+            }
+            set {
+                if ((this.CountField.Equals(value) != true)) {
+                    this.CountField = value;
+                    this.RaisePropertyChanged("Count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CurrentPage {
+            get {
+                return this.CurrentPageField;
+            }
+            set {
+                if ((this.CurrentPageField.Equals(value) != true)) {
+                    this.CurrentPageField = value;
+                    this.RaisePropertyChanged("CurrentPage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MoviesRememberClient.UserService.UserMovie> EntityList {
+            get {
+                return this.EntityListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityListField, value) != true)) {
+                    this.EntityListField = value;
+                    this.RaisePropertyChanged("EntityList");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalPage {
+            get {
+                return this.TotalPageField;
+            }
+            set {
+                if ((this.TotalPageField.Equals(value) != true)) {
+                    this.TotalPageField = value;
+                    this.RaisePropertyChanged("TotalPage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalResult {
+            get {
+                return this.TotalResultField;
+            }
+            set {
+                if ((this.TotalResultField.Equals(value) != true)) {
+                    this.TotalResultField = value;
+                    this.RaisePropertyChanged("TotalResult");
                 }
             }
         }
@@ -613,7 +751,7 @@ namespace MoviesRememberClient.UserService {
         void UpdateMovie(MoviesRememberClient.UserService.UserMovie movie);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUserMovieList", ReplyAction="http://tempuri.org/IUserService/GetUserMovieListResponse")]
-        System.Collections.Generic.List<MoviesRememberClient.UserService.UserMovie> GetUserMovieList(System.Guid userId);
+        MoviesRememberClient.UserService.TinyUserMovieList GetUserMovieList(System.Guid userId, int numPage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/AddUserAction", ReplyAction="http://tempuri.org/IUserService/AddUserActionResponse")]
         System.Collections.Generic.List<MoviesRememberClient.UserService.UserAction> AddUserAction(MoviesRememberClient.UserService.UserAction action);
@@ -664,8 +802,8 @@ namespace MoviesRememberClient.UserService {
             base.Channel.UpdateMovie(movie);
         }
         
-        public System.Collections.Generic.List<MoviesRememberClient.UserService.UserMovie> GetUserMovieList(System.Guid userId) {
-            return base.Channel.GetUserMovieList(userId);
+        public MoviesRememberClient.UserService.TinyUserMovieList GetUserMovieList(System.Guid userId, int numPage) {
+            return base.Channel.GetUserMovieList(userId, numPage);
         }
         
         public System.Collections.Generic.List<MoviesRememberClient.UserService.UserAction> AddUserAction(MoviesRememberClient.UserService.UserAction action) {
