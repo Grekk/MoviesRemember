@@ -22,6 +22,7 @@ namespace MoviesRememberClient.Controllers
         public ActionResult MyList(int page = 1)
         {
             TinyUserMovieList model = _userService.GetUserMovieList((Guid)Membership.GetUser().ProviderUserKey, page);
+            model.TinyUserMovies.CurrentPage = page;
             return View(model);
         }
 

@@ -33,6 +33,15 @@ namespace MoviesRememberClient.Controllers
         //
         // GET: /Showing/
         [Authorize]
+        public ActionResult WeekMovies(int page = 1)
+        {
+            IList<MoviesRememberClient.MoviesShowingService.TinyMovie> result = _moviesShowingService.GetBestWeekMovies();
+            return View(result);
+        }
+
+        //
+        // GET: /Showing/
+        [Authorize]
         public ActionResult NowShowingByDate(int page = 1)
         {
             TinyMovieList result = _moviesShowingService.GetNowShowingMoviesByDate(page);

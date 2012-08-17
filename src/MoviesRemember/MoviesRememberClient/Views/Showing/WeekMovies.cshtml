@@ -1,0 +1,10 @@
+﻿@model IList<MoviesRememberClient.MoviesShowingService.TinyMovie>
+@{
+    ViewBag.Title = "WeekMovies";
+}
+
+<h2>Film de la semaine</h2>
+
+<section class="features">
+@Html.EditorFor(x => Model)
+</section>

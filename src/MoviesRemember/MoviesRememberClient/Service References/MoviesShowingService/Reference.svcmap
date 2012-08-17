@@ -23,11 +23,11 @@
     <MetadataSource Address="http://movieapi.apphb.com/MoviesShowingService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="MoviesShowingService.xsd" MetadataType="Schema" ID="61cb980d-c905-4207-b16e-2b9926e800b9" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd0" />
-    <MetadataFile FileName="MoviesShowingService.wsdl" MetadataType="Wsdl" ID="13009fc4-604f-4c65-93d4-7029b66d3859" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?wsdl" />
-    <MetadataFile FileName="MoviesShowingService1.xsd" MetadataType="Schema" ID="fa89dfd2-644c-42b9-8776-d8a1de527e31" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd2" />
-    <MetadataFile FileName="MoviesShowingService.disco" MetadataType="Disco" ID="3cdfb98e-ed0b-4030-a16b-6bf3cebe9766" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?disco" />
-    <MetadataFile FileName="MoviesShowingService2.xsd" MetadataType="Schema" ID="a7ec2255-8884-469d-b24a-4a2622e99770" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MoviesShowingService.xsd" MetadataType="Schema" ID="23c10cfd-ae4d-45bb-b99f-279cc7de4e54" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MoviesShowingService.wsdl" MetadataType="Wsdl" ID="0285e660-362e-4e6b-b609-1e1fc87f2a1d" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?wsdl" />
+    <MetadataFile FileName="MoviesShowingService1.xsd" MetadataType="Schema" ID="ab9198cc-d767-4534-b066-2abea147452e" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MoviesShowingService.disco" MetadataType="Disco" ID="7c7f918c-addc-4617-818e-5b2d99c85ba1" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?disco" />
+    <MetadataFile FileName="MoviesShowingService2.xsd" MetadataType="Schema" ID="24ba9509-404b-4776-a327-6973ac4de49f" SourceId="1" SourceUrl="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

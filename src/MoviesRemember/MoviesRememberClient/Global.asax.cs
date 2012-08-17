@@ -36,7 +36,7 @@ namespace MoviesRememberClient
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "UserMovie", action = "MyList", id = UrlParameter.Optional }
+                defaults: new { controller = "Showing", action = "WeekMovies", id = UrlParameter.Optional }
             );
         }
 

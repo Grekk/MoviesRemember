@@ -278,9 +278,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\MoviesShowingService\MoviesShowingService.disco" />
     <None Include="Service References\SearchService\SearchService.disco" />
     <None Include="Service References\UserService\UserService.disco" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService.disco" />
     <Content Include="Web.config">
       <TransformOnBuild>true</TransformOnBuild>
       <SubType>Designer</SubType>
@@ -331,6 +331,7 @@
     <None Include="Service References\UserService\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Showing\WeekMovies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
