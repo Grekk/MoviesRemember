@@ -23,11 +23,11 @@
     <MetadataSource Address="http://movieapi.apphb.com/UserService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="44d87a6e-192a-4df7-a96b-5c7c012b26ee" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?disco" />
-    <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="7d04cc80-3908-4865-ada1-87d2ba3a930c" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?wsdl" />
-    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="fcc79795-365f-4087-9d6f-ceb391d195b3" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?xsd=xsd2" />
-    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="e597e779-d2a4-4996-8293-92ab53bfe6ac" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?xsd=xsd1" />
-    <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="374e3b01-7017-4bb0-8b0f-d6f8ee248404" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="e8908a8a-4220-4d85-9031-265130559697" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?disco" />
+    <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="bf843b7a-7d6a-4f9d-8d6c-bfd4366eb208" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?wsdl" />
+    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="086995c9-4e7d-4b48-8584-f8b3aebff873" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="e4147e89-32c4-467c-8665-5845feaa6c84" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="9cac0d51-b5a1-41d5-82f9-8baf4e24320b" SourceId="1" SourceUrl="http://movieapi.apphb.com/UserService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
