@@ -1,9 +1,9 @@
-﻿@model MoviesRememberClient.MoviesShowingService.TinyMovieList
+﻿@model MoviesRememberClient.SearchService.TinyMovieList
 @{
     ViewBag.Title = "Search";
 }
 
 <h2>Résultats</h2>
 <section class="features">
-@Html.EditorFor(x => x.TinyMovies.EntityList)
+    @Html.EditorFor(x => x.TinyMovies.EntityList)
 </section>
