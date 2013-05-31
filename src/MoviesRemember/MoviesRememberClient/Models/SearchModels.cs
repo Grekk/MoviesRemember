@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MoviesRememberClient.MoviesShowingService;
+using MoviesRememberClient.SearchService;
 
 namespace MoviesRememberClient.Models
 {
