@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MoviesRememberClient.SearchService;
+using MoviesRememberClient.MoviesShowingService;
 using MoviesRememberClient.Models;
 
 namespace MoviesRememberClient.Controllers
 {
     public class SearchController : Controller
     {
-        private readonly ISearchService _searchService;
+        private readonly IMoviesShowingService _moviesShowingService;
 
-        public SearchController(ISearchService searchService)
+        public SearchController(IMoviesShowingService moviesShowingService)
         {
-            _searchService = searchService;
+            _moviesShowingService = moviesShowingService;
         }
 
         [HttpPost]
         [Authorize]
         public ActionResult Search(string q)
         {
-            TinyMovieList movieList = _searchService.Search(q);
+            TinyMovieList movieList = _moviesShowingService.Search(q);
             return View("Search", movieList);
         }
     }

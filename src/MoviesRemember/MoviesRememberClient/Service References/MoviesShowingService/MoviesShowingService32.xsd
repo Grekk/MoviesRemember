@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://movieapi.apphb.com/MoviesShowingService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" />
+  <xs:import schemaLocation="http://localhost:4930/MoviesShowingService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" />
   <xs:element name="GetNowShowingMoviesByRate">
     <xs:complexType>
       <xs:sequence>
@@ -80,6 +80,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="GetMovieResult" nillable="true" type="q6:Movie" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Search">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="query" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MoviesRememberDomain" minOccurs="0" name="SearchResult" nillable="true" type="q7:TinyMovieList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

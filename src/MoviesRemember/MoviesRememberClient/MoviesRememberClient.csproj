@@ -21,6 +21,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -164,11 +168,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\SearchService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -239,32 +238,13 @@
     </None>
     <None Include="Service References\MoviesShowingService\configuration91.svcinfo" />
     <None Include="Service References\MoviesShowingService\configuration.svcinfo" />
-    <None Include="Service References\MoviesShowingService\MoviesShowingService.wsdl" />
-    <None Include="Service References\MoviesShowingService\MoviesShowingService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MoviesShowingService\MoviesShowingService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MoviesShowingService\MoviesShowingService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="Service References\MoviesShowingService\MoviesShowingService1.wsdl" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService3.xsd" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService31.xsd" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService32.xsd" />
     <None Include="Service References\MoviesShowingService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\SearchService\MoviesRememberClient.SearchService.TinyMovieList.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\SearchService\SearchService.wsdl" />
-    <None Include="Service References\SearchService\SearchService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SearchService\SearchService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\SearchService\SearchService2.xsd">
-      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserService\MoviesRememberClient.UserService.TinyUserMovieList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -278,15 +258,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\SearchService\configuration91.svcinfo" />
-    <None Include="Service References\SearchService\configuration.svcinfo" />
-    <None Include="Service References\SearchService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\SearchService\SearchService.disco" />
-    <None Include="Service References\MoviesShowingService\MoviesShowingService.disco" />
     <None Include="Service References\UserService\UserService.disco" />
+    <Content Include="Service References\MoviesShowingService\MoviesShowingService1.disco" />
     <Content Include="Web.config">
       <TransformOnBuild>true</TransformOnBuild>
       <SubType>Designer</SubType>
@@ -389,7 +362,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MoviesShowingService\" />
-    <WCFMetadataStorage Include="Service References\SearchService\" />
     <WCFMetadataStorage Include="Service References\UserService\" />
   </ItemGroup>
   <PropertyGroup>

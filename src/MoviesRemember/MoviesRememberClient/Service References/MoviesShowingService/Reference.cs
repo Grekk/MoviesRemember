@@ -542,6 +542,9 @@ namespace MoviesRememberClient.MoviesShowingService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMoviesShowingService/GetMovie", ReplyAction="http://tempuri.org/IMoviesShowingService/GetMovieResponse")]
         MoviesRememberClient.MoviesShowingService.Movie GetMovie(long code);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMoviesShowingService/Search", ReplyAction="http://tempuri.org/IMoviesShowingService/SearchResponse")]
+        MoviesRememberClient.MoviesShowingService.TinyMovieList Search(string query);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -593,6 +596,10 @@ namespace MoviesRememberClient.MoviesShowingService {
         
         public MoviesRememberClient.MoviesShowingService.Movie GetMovie(long code) {
             return base.Channel.GetMovie(code);
+        }
+        
+        public MoviesRememberClient.MoviesShowingService.TinyMovieList Search(string query) {
+            return base.Channel.Search(query);
         }
     }
 }
