@@ -238,10 +238,10 @@
     </None>
     <None Include="Service References\MoviesShowingService\configuration91.svcinfo" />
     <None Include="Service References\MoviesShowingService\configuration.svcinfo" />
-    <Content Include="Service References\MoviesShowingService\MoviesShowingService1.wsdl" />
-    <None Include="Service References\MoviesShowingService\MoviesShowingService3.xsd" />
-    <None Include="Service References\MoviesShowingService\MoviesShowingService31.xsd" />
-    <None Include="Service References\MoviesShowingService\MoviesShowingService32.xsd" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService.wsdl" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService.xsd" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService1.xsd" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService2.xsd" />
     <None Include="Service References\MoviesShowingService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -259,7 +259,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\UserService\UserService.disco" />
-    <Content Include="Service References\MoviesShowingService\MoviesShowingService1.disco" />
+    <None Include="Service References\MoviesShowingService\MoviesShowingService.disco" />
     <Content Include="Web.config">
       <TransformOnBuild>true</TransformOnBuild>
       <SubType>Designer</SubType>
