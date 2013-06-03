@@ -10,3 +10,5 @@ _ReSharper.MoviesRemember
 
 # mstest test results
 TestResults
+
+*.suo

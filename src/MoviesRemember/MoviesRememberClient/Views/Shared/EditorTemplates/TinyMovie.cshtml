@@ -3,51 +3,53 @@
     ViewBag.Title = "TinyMovie";
 }
 <section class="feature">
-<div>
-@if (string.IsNullOrEmpty(Model.PictureUrl))
-{
-    <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })"><img src="../../Images/no_image.gif" height="193" width="143"/></a>
-}
-else
-{
-    <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })"><img src="@Model.PictureUrl" height="193" width="143"/></a>
-}
-    @if (!string.IsNullOrEmpty(@Model.Title))
-    {
-       <h4>@Model.Title</h4>
-    }
-    else
-    {
-       <h4>@Model.OriginalTitle</h4>
-    }
-    
-    @if (!string.IsNullOrEmpty(@Model.OriginalTitle) && @Model.OriginalTitle != @Model.Title)
-    {
-        <small>(@Model.OriginalTitle)</small>
-    }
-    
-    @if (@Model.ReleaseDate.HasValue)
-    {
-    <p><b>Sortie: </b>@Html.DisplayFor((x => x.ReleaseDate),String.Format("dd/MM/yyyy"))</p>
-    }
+    <div>
+        @if (string.IsNullOrEmpty(Model.PictureUrl))
+        {
+            <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })">
+                <img src="../../Images/no_image.gif" height="193" width="143" /></a>
+        }
+        else
+        {
+            <a href="@Url.Action("DisplayMovie", "Showing", new { code = @Model.ApiId })">
+                <img src="@Model.PictureUrl" height="193" width="143"/></a>
+        }
+        @if (!string.IsNullOrEmpty(@Model.Title))
+        {
+            <h4>@Model.Title</h4>
+        }
+        else
+        {
+            <h4>@Model.OriginalTitle</h4>
+        }
 
-    @if (!string.IsNullOrEmpty(@Model.Director))
-    {
-         <p><b>De: </b>@Model.Director</p>
-    }
-    
-    @if (@Model.PressRatings != null)
-    {
-    <p><b>Presse: </b>@Model.PressRatings / 5 </p>
-    }
-    @if (@Model.UserRatings != null)
-    {
-    <p><b>Spectateurs: </b>@Model.UserRatings / 5 </p>
-    }
-    
-    @if (!string.IsNullOrEmpty(@Model.Trailer))
-    {
-    <a href="@Model.Trailer">Bande annonce</a>
-    }
-</div>
+        @if (!string.IsNullOrEmpty(@Model.OriginalTitle) && @Model.OriginalTitle != @Model.Title)
+        {
+            <small>(@Model.OriginalTitle)</small>
+        }
+
+        @if (@Model.ReleaseDate.HasValue)
+        {
+            <p><b>Sortie: </b>@Html.DisplayFor((x => x.ReleaseDate), string.Format("dd/MM/yyyy"))</p>
+        }
+
+        @if (!string.IsNullOrEmpty(@Model.Director))
+        {
+            <p><b>De: </b>@Model.Director</p>
+        }
+
+        @if (@Model.PressRatings != null)
+        {
+            <p><b>Presse: </b>@Model.PressRatings / 5 </p>
+        }
+        @if (@Model.UserRatings != null)
+        {
+            <p><b>Spectateurs: </b>@Model.UserRatings / 5 </p>
+        }
+
+        @if (!string.IsNullOrEmpty(@Model.Trailer))
+        {
+            <a href="@Model.Trailer">Bande annonce</a>
+        }
+    </div>
 </section>
